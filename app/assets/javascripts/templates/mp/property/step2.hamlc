@@ -1,0 +1,75 @@
+#tip_bar
+	符合您筛选条件的可发送用户大于
+	= @count
+	人，请制定推送规则！
+%form#step_2(action="/plan/personals/preview" data-remote="true" method="post")
+	.field.form-inline.title
+		%label(for="program_name")
+			方案名称
+		%input#program_name.form-control{:value => @program_name}(type="text" name="program_name" placeholder="请为本方案起个好记的名字吧")
+		.tips
+			4-25个汉字、字母、数字及符号
+		%span.err_tip
+	.field.form-inline.clearfix
+		!= JST['mp/widget/begin_end_date'](begin_date: @begin_date,end_date: @end_date)
+		%span.err_tip
+	.field
+		%label
+			推送数量
+		.slider
+			#number-slider
+			%input{:value => @push_number}(type="text" name="push_number")
+			.num_wrap
+				%span.num
+					1000
+					条
+			.btn-group
+				.m-top.mbtn
+				.m-down.mbtn
+			%span.btn.set_rule.t3
+				设定推送规则
+	#hidden_rule.field.form-inline
+	.field.form_textarea
+		!= JST['mp/widget/textarea'](type: "text",content: @push_content)
+		.tips
+			每64个字符（包括汉字、数字、字母、符号等）为1条短信
+		%span.err_tip2
+
+	.field.table_view
+		.title
+			推送计划成本
+		%ul
+			%li.push_number
+				.big_num
+					= @push_number
+				.desc
+					总计发送
+			%li
+				.big_num
+					= @personal
+				.desc
+					个性化短信剩余
+			%li
+				.big_num
+					= @custome
+				.desc
+					自定义名单短信剩余
+			%li.buy_number
+				.big_num
+					- num = @push_number - @personal
+					= if num > 0 then "#{num}条" else "0条"				
+				.desc
+					您还需要购买个性化短信
+	.field
+		.title
+			特别声明
+		.content
+			1.如有多个计划同时推送，为保证推送质量，每个用户只会收到一条最先提交计划的短信，未发满或发送失败的短信条数将在推送完成后返还您的账户。
+			%br
+			2.短信推送时会根据发送通道使用状况优化推送时间，实际推送时间请以发送执行报告为准。
+			%br
+			3.请勿发送非法信息及危害社会的言论，否则我们会将非法信息移交公安法律部门处理。
+	.action
+		%span.btn.btn-default.back_step_1
+			上一步
+		%input.btn.btn-primary(type="submit" value="预览")

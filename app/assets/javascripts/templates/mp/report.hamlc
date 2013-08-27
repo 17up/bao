@@ -1,0 +1,22 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		营销管理中心
+.main
+	.nav-title
+		报表查询
+	.main-container
+		%table.table.table-hover.table-striped
+			%thead
+				%tr
+					%th
+						方案名称
+					%th
+						推送数量
+					%th
+						统计时间
+					%th
+						操作

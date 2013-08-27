@@ -1,0 +1,31 @@
+%table.table.table-hover.table-striped.fixed
+	%thead
+		%tr
+			%th
+				用户编号
+			%th
+				短信推送时间
+			/ %th
+			/ 	短信接收状态
+			%th
+				发送方式
+			%th
+				短信文案
+			/ %th
+			/ 	方案名称
+	- for item in @detail
+		%tr
+			%td
+				= item.mobile
+			%td
+				= item.push_time
+			/ %td
+			/ 	= item.push_status
+			%td
+				= item.push_type
+			%td
+				= item.sms_content
+			/ %td
+			/ 	= item.program_name
+.text-right
+	!= @pagination_str

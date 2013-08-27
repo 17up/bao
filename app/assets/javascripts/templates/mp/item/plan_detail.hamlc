@@ -1,0 +1,45 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		短信营销
+	= "-"
+	%span.text
+		- if @p_type is 2
+			个性化名单推送
+		- else
+			自定义名单推送
+	= "-"
+	%span.text
+		查看
+.main
+	.nav-title
+		= @program_name
+	.main-container
+		.field
+			%label
+				方案名称
+			%span.val
+				= @program_name
+		.field
+			%label
+				推送日期
+			%span.val
+				= @begin_date
+				至
+				= @end_date
+		.field
+			%label
+				推送数量
+			%span.val
+				= @push_number
+		.field
+			%label
+				推送文案
+			%span.val
+				= @push_content
+		.action
+			%span.btn.btn-default.back
+				返回

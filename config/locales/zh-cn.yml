@@ -1,0 +1,22 @@
+zh-cn:
+    admin:
+        pagination:
+            first: "&laquo; 首页"
+            last: "尾页 &raquo;"
+            previous: "&lsaquo; 上一页"
+            next: "下一页 &rsaquo;"
+            truncate: "..."
+    member_coupon:
+        cp_view_count: "优惠券页面浏览数"
+        cp_push_count: "优惠券下载次数"
+        weixin_follow_count: "微信关注次数"
+        weibo_follow_count: "微博关注次数"
+        tel_count: "电话拨打次数"
+        book_count: "成功预约次数"
+        tip:
+            cp_view_count: "浏览"
+            cp_push_count: "下载"
+            weixin_follow_count: "微信关注"
+            weibo_follow_count: "微博关注"
+            tel_count: "拨打"
+            book_count: "成功预约"

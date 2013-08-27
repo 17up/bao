@@ -1,0 +1,9 @@
+NEXUS_API_SERVER =  "kalgan01"
+# NEXUS_API_SERVER =  "192.168.88.103"
+NEXUS_API_PORT = 8191
+
+NEXUS_TEST_API_SERVER =  "192.168.88.103"
+NEXUS_TEST_API_PORT = 8191
+
+HADOOP_DATA_DIR= "/home/hduser/ups_cm/city_data"
+#HADOOP_DATA_DIR= "/Users/martin/Data/imc/trigger"

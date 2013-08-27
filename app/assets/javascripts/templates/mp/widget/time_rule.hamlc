@@ -1,0 +1,31 @@
+.push_rule_title
+	共推送
+	%span.num
+		= @number
+	人
+- for i in @rule_collection
+	%input{:value => i.date}(type="hidden" name="push_date[]")
+	.rule_item
+		%span
+			= i.date
+		%span
+			= i.weekday
+		%label
+			发送时间
+		%select.form-control(name="push_time[]")
+			%option
+				9:00-12:00
+			%option
+				12:00-15:00
+			%option
+				15:00-18:00
+			%option
+				18:00-21:00
+			%option
+				21:00-24:00
+		%label
+			设定人数
+		%input.form-control.t140.spinEdit{:value => i.default}(type="text" readonly="readonly" name="push_number_perday[]")
+.bot_action
+	%span.btn.btn-default.set_default
+		系统默认

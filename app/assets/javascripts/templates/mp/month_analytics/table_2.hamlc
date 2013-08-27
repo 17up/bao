@@ -1,0 +1,32 @@
+%table.table.table-hover.table-striped.fixed.text_center
+	%thead
+		%tr
+			%th
+				消费频次
+			%th
+				成交人数
+			%th
+				成交人数占比
+			%th
+				成交金额（元）
+			%th
+				成交金额占比
+			%th
+				客单价（元）
+	- for item in [0..16]
+		%tr
+			%td
+				7次			
+			%td
+				100
+			%td
+				22%
+			%td
+				150
+			%td
+				20%
+			%td
+				1000
+
+.text-right
+	!= @pagination_str

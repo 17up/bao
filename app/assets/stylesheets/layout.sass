@@ -1,0 +1,236 @@
+$border-color: #c7c7c7
+$min-width: 840px
+#top_nav
+	height: 85px
+	background: #eee
+	width: 100%			
+	min-width: $min-width + 250
+	position: relative
+	a.brand
+		width: 261px
+		height: 42px
+		background: asset-url('mp/logo_03.png') no-repeat
+		top: 18px
+		left: 20px
+		position: absolute
+		span.text
+			position: absolute
+			right: -40px
+			color: #024a86
+	#top_bar
+		position: absolute
+		bottom: 0px
+		background: asset-url('mp/bar.jpg') repeat-x
+		height: 5px
+		width: 100%
+	.brand
+		width: 200px
+		text-align: center
+		display: block
+		padding-top: 10px
+		height: 70px
+		line-height: 55px
+		img		
+			width: 145px
+	#account_cpanel
+		position: absolute
+		right: 0
+		top: 0
+		.nav-item
+			line-height: 60px
+			font-size: 16px
+			padding: 10px
+			border-left: 1px solid #ccc
+		.logout
+			width: 110px
+			text-align: center
+			a
+				text-decoration: none
+#side_nav
+	position: absolute
+	left: 20px
+	top: 10px
+	width: 210px
+	z-index: 999	
+	#logo
+		height: 150px
+		background: asset-url("mp/logo2.png") no-repeat center
+
+	ul.side-list	
+		list-style: none
+		width: 100%
+		margin: 0
+		padding: 0
+		height: 100%	
+		li.nav-head
+			height: 50px
+			line-height: 48px
+			font-size: 16px
+			position: relative
+			padding-left: 60px
+			font-style: normal
+			color: #1f262e
+			padding-left: 0
+			margin-top: 10px
+			.icon
+				position: absolute
+				left: 16px
+				top: 50%
+				margin-top: -11px
+				width: 23px
+				height: 22px
+			.icon-1
+				background: asset-url('mp/ico2_31.png') no-repeat
+			.icon-2
+				background: asset-url('mp/ico_35.png') no-repeat
+			.icon-3
+				background: asset-url('mp/ico_49.png') no-repeat
+			.icon-5
+				background: asset-url('mp/ico_51.png') no-repeat
+			&:hover
+				background: #dce9f2
+				a
+					color: #158ee2
+		li 		
+			position: relative
+			border: 1px solid #c6c6c6
+			margin-top: 5px		
+			.icon
+				position: absolute
+				left: 16px
+				top: 50%
+				margin-top: -11px
+				width: 23px
+				height: 22px
+			.icon-4
+				background: asset-url('mp/ico_41.png') no-repeat
+			a 
+				display: block	
+				margin-left: 53px
+				font-style: normal
+				color: #444
+				line-height: 48px
+				font-size: 16px 
+				text-decoration: none
+				padding-left: 7px
+			&:hover
+				background: #dce9f2
+				a
+					color: #0c91e5
+		li.active
+			border-left: 2px solid #008ff3
+			background: #dce9f2
+			a
+				color: #158ee2
+		li.nav-head.active
+			border: 1px solid #0c91e5
+			background: #0c91e5
+			.icon-1
+				background: asset-url('mp/ico_31.png') no-repeat
+			.icon-2
+				background: asset-url('mp/ico2_35.png') no-repeat
+			.icon-3
+				background: asset-url('mp/ico2_49.png') no-repeat
+			.icon-5
+				background: asset-url('mp/ico2_51.png') no-repeat
+			a 
+				color: white
+				background: #169ef4
+	ul.top-list
+		margin-bottom: 20px
+		li.last
+			border-top: none
+		li.nav-head
+			margin-top: 0
+			padding-left: 40px
+			.icon
+				position: absolute
+				left: 10px
+				top: 50%
+				margin-top: -24px
+				width: 18px
+				height: 48px
+			.icon-1
+				background: asset-url('mp/ico_12.png') no-repeat
+			.icon-2
+				background: asset-url('mp/ico_24.png') no-repeat
+#container
+	background-color: #fff
+	position: relative
+	padding: 20px
+	th
+		color: #373737
+	td
+		background: #fff
+		line-height: 25px
+	#article
+		min-width: $min-width
+		margin-left: 230px
+		.flash
+			margin-bottom: 0
+	.main-container
+		margin-top: 10px
+
+	.copyright
+		padding: 20px
+		font-size: 13px
+		color: #999
+
+.nav-bar
+	padding: 10px 20px
+	color: #71797c
+	background-color: #fbfbfb
+	border: 1px solid $border-color
+	position: relative
+	.text
+		padding: 0 5px
+	.right_btn
+		position: absolute
+		top: 0
+		right: 0
+		line-height: 40px
+		padding: 0 15px
+		background: #e6e6e6
+		border-left: 1px solid $border-color
+		cursor: pointer
+.prepend-span
+	width: 56px
+.main
+	.main-title
+		padding: 20px 20px 10px 20px
+		font-size: 26px
+		color: #d83334
+		line-height: 1
+	.nav-title
+		padding: 20px 0px 10px 0px
+		font-size: 26px
+		color: #5d687c
+		line-height: 1
+		position: relative
+		.right_panel
+			position: absolute
+			right: 10px
+			top: 20px
+			font-size: 16px
+	.main-container
+		.tabbable
+			ul
+				margin: 0
+				padding: 0
+				li 
+					a
+						color: #5d687c
+						font-size: 16px
+				li.active
+					a
+						color: #00528b
+						background-color: #f9f9f9
+		.tab-content
+			border: 1px solid #ddd
+			border-top: none
+			position: relative
+			#filter
+				width: 100px
+				position: absolute
+				top: 20px 
+				right: 70px

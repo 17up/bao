@@ -1,0 +1,9 @@
+.alert.alert-success
+	方案创建成功，已提交审核，请耐心等待
+.alert.alert-info
+	%p
+		方案名称:
+		= @name
+	%p
+		方案文案:
+		= @content

@@ -1,0 +1,24 @@
+- if @type is "text"
+	%label(for="push_content")
+		推送文案
+	.textarea
+		%textarea#push_content.form-control(name = "push_content")
+			= @content
+		.content_tip
+			短信条数为
+			%span.num2
+				0
+			条，您已经输入
+			%span.num3
+				0
+			个字
+- else if @type is "mobile"
+	%label(for="push_mobiles")
+		推送号码
+	.textarea.push_mobiles
+		%textarea#push_mobiles.form-control(name = "push_mobiles")
+		.content_tip
+			您已输入
+			%span.num4
+				0
+			个手机号

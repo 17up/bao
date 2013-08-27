@@ -1,0 +1,42 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		短信营销
+	= "-"
+	%span.text
+		自定义名单推送
+.main
+	.nav-title
+		自定义名单推送
+	.main-container
+		.section
+			%form#custom_form(action="/mp/test" data-remote="true" method="post")
+				.field.form-inline.title
+					%label(for="program_name")
+						方案名称
+					%input#program_name.form-control{:value => @program_name}(type="text" name="program_name" placeholder="请为本方案起个好记的名字吧")
+					.tips
+						4-25个汉字、字母、数字及符号
+					%span.err_tip
+				.field.form_textarea
+					!= JST['mp/widget/textarea'](type: "mobile")
+					.action
+						%span.btn.t3.add_list
+							添加到新名单
+						%span.btn.t3.select_list
+							选择已有名单
+				.field.form-inline.clearfix
+					!= JST['mp/widget/begin_end_date'](begin_date: @begin_date,end_date: @end_date)
+					%span.err_tip
+				.field.form_textarea
+					!= JST['mp/widget/textarea'](type: "text",content: @push_content)
+					.tips
+						每64个字符（包括汉字、数字、字母、符号等）为1条短信
+					%span.err_tip2
+				.action
+					%input.btn.btn-primary(type="submit" value="提交")
+!= JST['mp/widget/add_list_modal']()
+!= JST['mp/widget/select_list_modal']()

@@ -1,0 +1,12 @@
+%td
+	= @plan_name
+%td
+	= @number
+%td
+	= @active_begin
+	到
+	= @active_end
+%td
+	%span.detail
+		%i.icon-file-alt
+		查看

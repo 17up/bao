@@ -1,0 +1,56 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "- " + @plan_name + " -"
+	%span.text
+		营销执行报告
+	#return_manage.right_btn
+		%span.icon-reply
+		返回营销管理中心
+.main
+	#sp_summary
+		.sp_header.clearfix
+			.nav-title.pull-left
+				营销执行概况
+			.date_bar.pull-right
+				= @begin_date
+				至
+				= @end_date
+		.sp_container.table_view
+			%ul
+				%li
+					.big_num
+						= @status
+					.desc
+						方案状态
+				%li
+					.big_num
+						= "#{@success_number}条"
+						
+					.desc
+						成功推送
+				%li
+					.big_num
+						= "#{@number}条"
+						
+					.desc
+						计划推送
+				%li
+					.big_num
+						= "#{@wait_days}天"
+						
+					.desc
+						剩余推送天数
+	#sp_chart
+		.sp_header
+			.nav-title
+				每日推送分布图
+		.sp_container
+			#chart1
+	#sp_detail
+		.sp_header
+			.nav-title
+				成功推送明细
+		.sp_container
+			

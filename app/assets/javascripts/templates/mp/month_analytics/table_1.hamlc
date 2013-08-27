@@ -1,0 +1,35 @@
+%table.table.table-hover.table-striped.fixed.text_center
+	%thead
+		%tr
+			%th
+				日期
+			%th
+				成交笔数
+			%th
+				成交人数
+			%th
+				新客户数
+			%th
+				老客户数
+			%th
+				成交金额（元）
+			%th
+				客单价（元）
+	- for item in [0..16]
+		%tr
+			%td
+				2013-09-09				
+			%td
+				100
+			%td
+				200
+			%td
+				150
+			%td
+				20
+			%td
+				1000
+			%td
+				2300
+.text-right
+	!= @pagination_str

@@ -1,0 +1,39 @@
+%table.table.table-hover.table-striped.fixed
+	%thead
+		%tr
+			%th
+				成交时间
+			%th
+				成交金额
+			%th
+				商户编号
+			%th
+				终端号
+			%th
+				用户编号
+			%th
+				卡号后4位
+			%th
+				营销方案
+			%th
+				曝光时间
+	- for item in @detail
+		%tr
+			%td
+				= item.trans_rcv_ts
+			%td
+				= item.trans_at
+			%td
+				= item.mid
+			%td
+				= item.tid
+			%td
+				= item.mobile
+			%td
+				= item.card
+			%td
+				= item.program_name
+			%td
+				= item.succ_time
+.text-right
+	!= @pagination_str

@@ -1,0 +1,22 @@
+#top_nav
+	%a.brand(href="/")
+
+	#top_bar
+#login_form
+	#top_login_tip
+		%span.icon.icon-user
+		登录
+	= form_for(resource, :as => resource_name, :url => session_path(resource_name),:html => {:class => "form-horizontal"}) do |f|
+		.control-group
+			%label(for="#member_login")
+				用户名:
+			= f.text_field :login,:placeholder => "请输入您的用户名",:required => "required",:class => "form-control"
+		.control-group
+			%label(for="#member_password")
+				密码:
+			= f.password_field :password,:placeholder => "请输入您的密码",:required => "required",:class => "form-control"
+		.control-group.text_center
+			%input.login_btn(type="submit" value="立即登录")
+				
+.index_copyright
+	沪ICP备13002437号-1    Copyright &copy; 2013 银联智惠

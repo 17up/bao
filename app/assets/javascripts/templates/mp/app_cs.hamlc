@@ -1,0 +1,58 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		营销管理中心
+.main
+	.main-title
+		百联又一城 五角场店
+	.main-container
+		.tabbable
+			%ul.nav.nav-tabs
+				%li.active
+					%a(href="#tab-1" data-toggle="tab")
+						实时访客统计
+				%li
+					%a(href="#tab-2" data-toggle="tab")
+						收藏后到店消费时间分布
+				%li
+					%a(href="#tab-3" data-toggle="tab")
+						访客收藏交易明细
+		.tab-content
+			#tab-1.tab-pane.active
+				.chart
+			#tab-2.tab-pane
+				.chart2
+			#tab-3.tab-pane
+				.alert.alert-success
+					共100人收藏本店铺，成功交易1人
+				%table.table.table-hover
+					%thead
+						%tr
+							%th
+								用户ID
+							%th
+								手机号后4位
+							%th
+								卡号后4位
+							%th
+								收藏时间
+							%th
+								是否交易
+							%th
+								交易时间
+					%tr.success
+						%td
+							veggie
+						%td
+							7777
+						%td
+							1717
+						%td
+							2013-03-07 12:00
+						%td
+							是
+						%td
+							2013-03-07 13:00

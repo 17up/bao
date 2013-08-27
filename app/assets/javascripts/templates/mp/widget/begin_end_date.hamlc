@@ -1,0 +1,8 @@
+.form-group.date.form_datetime
+	%label(for="begin_date")
+		开始日期
+	%input#begin_date.form-control{:value => @begin_date}(readonly="readonly" type="text" name="begin_date")
+.form-group.date.form_datetime
+	%label(for="end_date")
+		结束日期
+	%input#end_date.form-control{:value => @end_date}(readonly="readonly" type="text" name="end_date")

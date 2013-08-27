@@ -1,0 +1,21 @@
+.main-title
+	= @store_name
+.main-container
+	.tabbable
+		%ul.nav.nav-tabs
+			%li.active
+				%a(href="#tab-1" data-toggle="tab")
+					推送客户交易概况
+			%li
+				%a(href="#tab-2" data-toggle="tab")
+					推送成交转化率
+			%li
+				%a(href="#tab-3" data-toggle="tab")
+					推送客户成交明细
+	.tab-content
+		#tab-1.tab-pane.active
+			!= @report_1
+		#tab-2.tab-pane
+			!= @report_2
+		#tab-3.tab-pane
+			!= @report_3

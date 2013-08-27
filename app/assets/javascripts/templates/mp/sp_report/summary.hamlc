@@ -1,0 +1,21 @@
+%ul
+	%li
+		.big_num
+			= @number
+		.desc
+			共为您推送短信
+	%li
+		.big_num
+			= @success_number
+		.desc
+			发送成功
+	%li
+		.big_num
+			= "#{@success_rate}%"
+		.desc
+			成功率
+	%li
+		.big_num
+			= @wait_number
+		.desc
+			剩余待发短信

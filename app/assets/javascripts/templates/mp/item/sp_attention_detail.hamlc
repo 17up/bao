@@ -1,0 +1,23 @@
+%table.table.table-hover.table-striped.fixed
+	%thead
+		%tr
+			%th
+				用户编号
+			%th
+				关注时间
+			%th
+				关注方式
+			%th
+				营销方案
+	- for item in @detail
+		%tr
+			%td
+				= item.mobile
+			%td
+				= item.care_time
+			%td
+				= item.care_type
+			%td
+				= item.program_name
+.text-right
+	!= @pagination_str

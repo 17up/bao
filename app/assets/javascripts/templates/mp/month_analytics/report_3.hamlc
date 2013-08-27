@@ -1,0 +1,14 @@
+/ #analy_content.clearfix
+/ 	#chart3.clearfix.pull-left
+/ 		- for i in [0..69]
+/ 			%span.icon.icon_male
+/ 		- for i in [0..29]
+/ 			%span.icon.icon_female
+/ 		.summary.text_center
+/ 			男：70%
+/ 			女：30%
+/ 	#chart4.chart.pull-left
+/ .clearfix
+/ 	#chart5.chart.pull-left
+/ 	#chart6.chart.pull-left
+

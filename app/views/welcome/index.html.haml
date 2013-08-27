@@ -1,0 +1,48 @@
+#top_nav
+	%a.brand(href="/")
+		%span.text
+			演示版
+	#account_cpanel.clearfix
+		.nav-item.member.pull-left
+			欢迎你,
+			= current_member.user_name
+		.nav-item.logout.pull-right
+			%a(href = "/members/sign_out" data-method="delete" rel="nofollow")
+				退出系统
+	#top_bar
+#container
+	#side_nav	
+		#logo.hide
+			
+		%ul.side-list.top-list.hide
+			%li.nav-head 
+				.icon.icon-1
+				账户余额10000元
+			%li.nav-head.last
+				.icon.icon-2
+				信息管理
+		%ul.side-list
+			%li.nav-head 
+				.icon.icon-1
+				= link_to "首页", "#homepage"
+			%li.nav-head 
+				.icon.icon-2
+				= link_to "短信营销", "#manage_list"
+			%li
+				.icon.icon-4
+				= link_to "个性化筛选推送", "#property_push"
+			%li
+				.icon.icon-4
+				= link_to "自定义名单推送", "#custom_push"
+			%li.nav-head 
+				.icon.icon-5
+				= link_to "银联微点", "#new_app"
+			%li.nav-head 
+				.icon.icon-3
+				= link_to "月度经营分析报告", "#month_analytics"
+	
+	#article
+	.copyright.hide
+		沪ICP备13002437号-1    Copyright &copy; 2013 银联智惠
+- content_for :footer do
+	#init(data-js="SmartMerchant")

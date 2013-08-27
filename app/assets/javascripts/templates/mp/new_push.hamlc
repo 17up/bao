@@ -1,0 +1,114 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		营销管理中心
+.main
+	- if @preview
+		.nav-title
+			方案预览
+		.main-container.form-container.form-preview
+			.item
+				.i-label
+					方案名称
+				.i-val
+					= @plan_name
+			.item
+				.i-label
+					活动日期
+				.i-val
+					= @active_begin
+					到
+					= @active_end
+			.item
+				.i-label
+					发送数量
+				.i-val
+					= @number
+			.item.chart-container.clearfix
+				.preview-panel
+					.top
+					.content
+					.bot
+				.chart1
+			.item
+				.i-label
+					推送文案
+				.i-val
+					= @content
+			.item.action
+				- if @show
+					%span.back-list.i-btn
+						返回
+				- else
+					%span.back.i-btn
+						返回修改
+					%span.submit.i-btn
+						提交方案
+	- else
+		.nav-title
+			- if @modify
+				修改推送方案
+			- else
+				新建推送方案
+		.main-container.form-container
+			%form#new_push_form(action='#')
+				.control-group
+					.input-prepend
+						%span.add-on
+							推送方案名称
+						%input#push_name{:value => @plan_name}(type="text" name="push_name" hidefocus="true")
+					.er-tip
+						请填写方案名称
+					.h-tip
+						请为本次推送起个好记的名字, 例如：2013劳动节***店庆
+				.control-group
+					.input-prepend
+						%span.add-on
+							活动开始日期
+						%input#push_date_start.date{:value => @active_begin}(type="text" name="push_date_start" hidefocus="true")
+
+					.input-prepend
+						%span.add-on
+							活动结束日期
+						%input#push_date_end.date{:value => @active_end}(type="text" name="push_date_end" hidefocus="true")
+					.h-tip
+						为保证推送效果,超过 7 天的活动请分成多个方案新建。
+					.er-tip1.er-tip
+						结束日期不能小于开始日期
+					.er-tip2.er-tip
+						请至少提前 3 天新建推送活动
+					.er-tip3.er-tip
+						活动时间大于 7 天,请分成多次方案提交
+				.control-group
+					.input-prepend
+						%span.add-on
+							设置发送总量
+					.slider
+						#number-slider
+						%input#number{:value => @number}(type="number" name="number" step=1000 min=1000 max=100000)
+						%span.num
+							您设置的发送数量为
+							1000
+							条
+				#p_content.control-group		
+					%span.prepend-span
+						推送短信文案
+					.textarea
+						%textarea#push_content.input-block-level(name = "push_content")
+							= @content
+						.content_tip
+							短信条数为
+							%span.num2
+								0
+							条，您还可输入
+							%span.num3
+								128
+							个字
+					.error-tip
+						请输入推送文案
+				.control-group	
+					%span.preview.i-btn
+						方案预览

@@ -1,0 +1,23 @@
+%td
+	= @program_name
+%td
+	= @created_at
+%td
+	= @type
+%td
+	= @status
+%td
+	%span.btn.check.t1
+		查看
+	%span.btn.edit.t1
+		编辑
+%td
+	%span.btn.stop.t1
+		终止
+%td
+	%span.btn.check_sp_report.t1
+		查看
+- if @p_type is 2
+	%td
+		%span.btn.check_sp_result.t1
+			查看

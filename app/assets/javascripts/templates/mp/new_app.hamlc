@@ -1,0 +1,19 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		银联微点
+.main
+	.nav-title
+		银联微点
+	.main-container
+		#app_bg_wrap
+		#app_content
+			.title
+				银联微点推荐服务，是银联智惠宝产品为您提供的移动互联网入口服务，是您实现O2O闭环的利器。
+			.iphone_wrap
+				.iphone
+				.iframe_wrap
+					%iframe(src="http://m.unionpaysmart.com/msite/merchants/4099" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes") 

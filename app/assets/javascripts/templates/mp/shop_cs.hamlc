@@ -1,0 +1,30 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		营销管理中心
+.main
+	.main-title
+		= @store_name
+	.main-container
+		.tabbable
+			%ul.nav.nav-tabs
+				%li.active
+					%a(href="#tab-1" data-toggle="tab")
+						商户消费统计
+				%li
+					%a(href="#tab-2" data-toggle="tab")
+						本商户客单价金额分布
+		.tab-content
+			#tab-1.tab-pane.active
+				.chart
+				%select#filter.nav.nav-pills
+					%option(value="rc7")
+						最近7天
+					%option(value="rc30")
+						最近30天
+
+			#tab-2.tab-pane
+				.chart2

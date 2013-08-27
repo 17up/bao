@@ -1,0 +1,36 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		短信营销
+	= "-"
+	%span.text
+		个性化筛选推送
+.main
+	.nav-title
+		个性化筛选推送
+	.main-container
+		%ul#top_navigate
+			%li.left.active
+				%span.ico
+				条件筛选
+				%span.split
+			%li.center{:class => ('active' if @step > 1)}
+				%span.ico
+				参数设置
+				%span.split
+			%li.right{:class => ('active' if @step > 2)}
+				%span.ico
+				发布方案
+		.section
+			- if @step is 1
+				.step_1
+					!= JST['mp/property/step1'](@)
+			- if @step is 2
+				.step_2	
+					!= JST['mp/property/step2'](@)
+			- if @step is 3
+				.step_3
+					!= JST['mp/property/step3'](@)

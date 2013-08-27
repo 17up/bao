@@ -1,0 +1,3 @@
+- for k in @selects
+	%option{:value => k[0]}
+		= k[1]

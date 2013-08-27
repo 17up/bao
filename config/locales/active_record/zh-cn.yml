@@ -1,0 +1,10 @@
+zh-cn:
+  activerecord:
+    models:
+      mp/member: "用户管理"
+
+    attributes:
+      mp/member:
+        email: "电子邮件"
+        user_name: "用户名"
+        mobile: "手机号码"

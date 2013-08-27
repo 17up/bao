@@ -1,0 +1,33 @@
+#select_list_modal.modal.fade
+	.modal-dialog
+		.modal-content
+			.modal-header
+				%button.close(type="button" data-dismiss="modal" aria-hidden="true")
+					&times;
+				%h4.modal-title
+					已有名单
+			.modal-body
+				%table.table
+					%thead
+						%tr
+							%th
+								选择
+							%th
+								名称
+							%th
+								人数
+							%th
+								更新时间
+					%tr
+						%td
+							%label.checkbox
+								%input.condi.toggle(type='checkbox' name="mobile_list[]"){:value => "1"}
+						%td
+							公司
+						%td
+							150
+						%td
+							2013-08-01
+			.modal-footer
+				%a.btn.btn-primary.confirm(href="javascript:void(0)")
+					确定

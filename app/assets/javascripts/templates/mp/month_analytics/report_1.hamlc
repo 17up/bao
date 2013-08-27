@@ -1,0 +1,48 @@
+.spd_header
+	整体经营概况
+.sp_container.table_view
+	%ul
+		%li
+			.big_num
+				= 20000
+			.desc
+				成交笔数
+		%li
+			.big_num
+				10000
+			.desc
+				成功人数
+		%li
+			.big_num
+				7500
+			.desc
+				新客户数
+		%li
+			.big_num
+				2500
+			.desc
+				老客户数
+		%li
+			.big_num
+				300000
+			.desc
+				成交金额（元）
+		%li
+			.big_num
+				12500
+			.desc
+				客单价（元）
+.spd_header
+	经营数据分布图
+.sp_container
+	#chart1.chart
+.spd_header
+	经营数据统计表
+	%span.btn.filter.btn-default
+		按日
+	%span.btn.filter.btn-default
+		按时
+	%span.btn.export.btn-default
+		导出
+.sp_container
+	!= JST['mp/month_analytics/table_1']()

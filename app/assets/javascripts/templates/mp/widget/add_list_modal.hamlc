@@ -1,0 +1,16 @@
+#add_list_modal.modal.fade
+	.modal-dialog
+		.modal-content
+			.modal-header
+				%button.close(type="button" data-dismiss="modal" aria-hidden="true")
+					&times;
+				%h4.modal-title
+					添加到新名单
+			.modal-body
+				%form#send_test_msg.form-inline(method="post" data-remote="true")
+					%label
+						请为新名单命名:
+					%input.form-control(type="text" name="name")
+			.modal-footer
+				%a.btn.btn-primary.confirm(href="javascript:void(0)")
+					确定

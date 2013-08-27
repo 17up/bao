@@ -1,0 +1,39 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		月度经营分析报告
+.main
+	.sp_header.clearfix
+		.nav-title.pull-left
+			月度经营分析报告
+		.filter_bar.pull-right
+			%form#sp_result_summary.form-inline{:action => @request_url}(data-remote="true" role="form")
+				统计区间：
+				!= JST['mp/widget/begin_end_date'](begin_date: $.date().adjust("D", -30).format("yyyy-MM-dd"),end_date: $.date().adjust("D", -1).format("yyyy-MM-dd"))
+	.main-container
+		.tabbable
+			%ul.nav.nav-tabs
+				%li.active
+					%a(href="#tab-1" data-toggle="tab")
+						店铺经营概况
+				%li
+					%a(href="#tab-2" data-toggle="tab")
+						成交记录分析
+				%li
+					%a(href="#tab-3" data-toggle="tab")
+						客户特征分析
+				%li
+					%a(href="#tab-4" data-toggle="tab")
+						成交流水明细
+		.tab-content
+			#tab-1.tab-pane.active
+				!= JST['mp/month_analytics/report_1']()
+			#tab-2.tab-pane
+				!= JST['mp/month_analytics/report_2']()
+			#tab-3.tab-pane
+				!= JST['mp/month_analytics/report_3']()
+			#tab-4.tab-pane
+				!= JST['mp/month_analytics/report_4']()

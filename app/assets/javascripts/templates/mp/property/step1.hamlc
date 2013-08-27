@@ -1,0 +1,24 @@
+%form#step_1(action="/plan/personals/filter_user" data-remote="true" method="post")
+	.line
+		%span
+			推送城市:
+		%span.options
+			= @city
+	- for option in @options
+		.line
+			%span
+				= "#{option.name}:"
+			%span.options
+				- if option.multi
+					- for item in option.items
+						%label.checkbox
+							%input.condi.toggle(type='checkbox'){:name => option.key,:value => item.key}
+								= item.name
+				- else
+					- for item,i in option.items
+						%label.radio	
+							%input.condi(type='radio'){:name => option.key,:value => item.key,:checked => (i is 0)}
+								= item.name
+	.action
+		%input.btn.btn-primary(type="submit" value="筛选")
+

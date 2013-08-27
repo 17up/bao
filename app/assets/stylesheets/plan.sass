@@ -1,0 +1,150 @@
+@import 'utils'
+
+#new_push
+	.control-group
+		position: relative
+		.input-prepend 
+			.add-on
+				height: 30px
+				line-height: 30px
+			input 
+				height: 30px
+				line-height: 30px
+			#push_name
+				width: 507px
+			.date
+				width: 195px
+		.er-tip
+			color: red
+			display: none
+			position: absolute
+			left: 630px
+			top: 10px
+		.h-tip
+			color: #999
+	.slider
+		height: 40px
+		width: 746px
+		margin-left: 107px
+		position: absolute
+		top: 0
+		#number-slider
+			width: 507px
+			margin-top: 13px
+		.num
+			height: 40px
+			line-height: 40px
+			position: absolute
+			top: 0
+			right: 15px
+		.ui-slider-range
+			background: #348cdd
+		.ui-state-default
+			background: asset-url('img/new-case_21.png') no-repeat
+			border: none
+			width: 25px 
+			height: 24px
+			top: -0.4em
+			outline: none
+		input
+			display: none
+	#p_content
+		position: relative
+		.prepend-span
+			position: absolute
+			width: 87px
+		.error-tip
+			text-align: right
+			color: red
+			display: none
+		.prepend-span
+			display: inline-block
+			padding: 4px
+			color: #00528b
+			height: 60px
+			line-height: 60px
+			border-radius: 4px 0 0 4px
+			text-align: center
+			text-shadow: 0 1px 0 #ffffff
+			background-color: #eeeeee
+			border: 1px solid #ccc
+			margin-left: 0
+			border-right: 0
+		.textarea
+			margin-left: 96px
+			position: relative
+			.content_tip
+				color: #999
+				position: absolute
+				right: 10px
+				bottom: 15px
+		#push_content
+			resize: none
+			width: 100%
+			height: 70px
+			display: inline-block
+			border-radius: 0 4px 4px 0
+			min-width: 490px
+		
+.form-container
+	background: #f9f9f9
+	padding: 20px
+	border: 1px solid #ccc
+	min-width: 800px
+	.add-on
+		color: #00528b
+	.i-btn
+		color: white
+		width: 196px
+		height: 38px
+		font-size: 20px
+		display: inline-block
+		text-align: center
+		line-height: 38px
+		text-decoration: none
+		cursor: pointer
+		margin: 0 5px
+	.control-group
+		margin-bottom: 15px
+	.preview,.submit			
+		background: asset-url('img/blue-btn-bg.png') no-repeat
+	.chart-container
+		background: #f0f0f0
+		.chart1
+			margin-right: 30px
+.form-preview
+	padding-top: 0
+	.item
+		padding: 15px 0
+		line-height: 1.5
+		position: relative
+		border-bottom: 1px dashed #ddd
+		.preview-panel
+			position: absolute
+			width: 295px		
+			display: none		
+			z-index: 999
+			.top
+				background: asset-url('img/top.png') no-repeat
+				height: 8px
+			.content 
+				padding: 0 10px
+				background: asset-url('img/content.png') repeat-y
+			.bot 
+				background: asset-url('img/bot.png') no-repeat
+				height: 18px
+		.i-label
+			position: absolute
+			left: 0
+			top: 17px
+			font-size: 14px
+			color: #00528b
+		.i-val
+			padding-left: 90px
+			font-size: 16px
+	.action
+		border: none
+		.back,.back-list
+			background: asset-url('img/orange-btn-bg.png') no-repeat
+			color: #5d687c
+

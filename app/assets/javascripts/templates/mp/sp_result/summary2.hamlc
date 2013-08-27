@@ -1,0 +1,21 @@
+%ul
+	%li.first
+		.big_num
+			= @exposure
+		.desc
+			曝光次数
+	%li
+		.big_num
+			= @attention
+		.desc
+			关注次数
+	%li
+		.big_num
+			= @tick_count
+		.desc
+			成交转化笔数
+	%li
+		.big_num
+			= @tick_amount
+		.desc
+			成交转化金额（元）

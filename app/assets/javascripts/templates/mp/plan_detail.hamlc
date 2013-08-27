@@ -1,0 +1,42 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		短信营销
+.main
+	.nav-title
+		方案查看
+	.main-container.form-container.form-preview
+		.item
+			.i-label
+				方案名称
+			.i-val
+				= @plan_name
+		.item
+			.i-label
+				活动日期
+			.i-val
+				= @active_begin
+				到
+				= @active_end
+		.item
+			.i-label
+				发送数量
+			.i-val
+				= @number
+		.item.chart-container.clearfix
+			.preview-panel
+				.top
+				.content
+				.bot
+			.chart1
+		.item
+			.i-label
+				推送文案
+			.i-val
+				= @content
+		.item.action
+			%span.back.i-btn
+				返回

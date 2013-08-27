@@ -1,0 +1,47 @@
+%ul.l1
+	%li
+		.big_num
+			= @push_number
+		.desc
+			优惠信息曝光
+	- cols = [['优惠券页面浏览数','cp_view_count'],['优惠券下载次数','cp_push_count'],['微信关注次数','weixin_follow_count']]
+	- for item in cols
+		- if @mc[item[1]] isnt undefined
+			%li
+				.big_num
+					= @mc[item[1]].num
+				.desc
+					= item[0]
+		- else
+			%li.missed
+				.big_num
+					0
+				.desc
+					= item[0]
+%ul.l2
+	- cols = [['微博关注次数','weibo_follow_count'],['电话拨打次数','tel_count'],['成功预约次数','book_count']]
+	- for item in cols
+		- if @mc[item[1]] isnt undefined
+			%li
+				.big_num
+					= @mc[item[1]].num
+				.desc
+					= item[0]
+		- else
+			%li.missed
+				.big_num
+					0
+				.desc
+					= item[0]
+	- if @gain_number
+		%li
+			.big_num
+				= @gain_number
+			.desc
+				刷卡交易次数
+	- else
+		%li.missed
+			.big_num
+				0
+			.desc
+				刷卡交易次数

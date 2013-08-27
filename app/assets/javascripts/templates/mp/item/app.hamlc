@@ -1,0 +1,14 @@
+%td
+	= @name
+%td
+	= @created_at
+%td
+	= @program_status
+%td
+	%span.btn.check
+		查看
+	%span.btn.edit
+		编辑
+%td
+	%span.btn.check_report
+		查看

@@ -1,0 +1,63 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		短信营销
+	= "-"
+	%span.text
+		营销效果报告
+	#return_manage.right_btn
+		%span.icon-reply
+		返回营销管理中心
+.main
+	.sp_header.clearfix
+		.nav-title.pull-left
+			营销效果概况
+		.filter_bar.pull-right
+			%form#sp_result_summary.form-inline{:action => @request_url}(data-remote="true" role="form")		
+				统计区间：
+				!= JST['mp/widget/begin_end_date'](begin_date: $.date().adjust("D", -30).format("yyyy-MM-dd"),end_date: $.date().adjust("D", -1).format("yyyy-MM-dd"))
+
+	.tabbable
+		%ul.nav.nav-tabs
+			%li.active
+				%a.summary(href="#tab-1" data-toggle="tab")
+					营销效果概况
+			%li
+				%a.attention(href="#tab-2" data-toggle="tab")
+					关注用户名单
+			%li
+				%a.conv(href="#tab-3" data-toggle="tab")
+					成交转化明细
+	.tab-content
+		#tab-1.tab-pane.active
+			#sp_summary			
+				.sp_container.table_view 
+			#sp_chart
+				.sp_container.clearfix
+					#chart1.chart
+					#chart2.chart
+					#chart3.chart
+					#chart4.chart
+			#sp_detail
+				.spd_header
+					每日效果统计
+					%span.btn.export.btn-default
+						导出
+				.sp_container
+		#tab-2.tab-pane
+			.spd_header
+				关注用户名单
+				%span.btn.export.btn-default
+					导出
+			.sp_container
+		#tab-3.tab-pane
+			.spd_header
+				成交转化明细
+				%span.btn.export.btn-default
+					导出
+			.sp_container
+	
+			

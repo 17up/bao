@@ -1,0 +1,250 @@
+#property_push,#custom_push
+	.main-container
+		border: 1px solid #ddd
+		margin-bottom: 100px
+		.section
+			.push_rule_title
+				margin-bottom: 10px
+				font:
+					size: 16px
+					weight: bold
+			#step_3
+				label
+					background: none
+					border: none
+			form
+				padding: 15px
+			.field,.form_datetime
+				label
+					height: 40px	
+					line-height: 28px	
+			.form_datetime
+				margin-right: 7px
+				float: left
+			.form-control
+				height: 40px	
+			.err_tip
+				color: red 
+				line-height: 40px
+			select
+				width: 150px
+				border-radius: 0
+			#hidden_rule
+				padding: 20px 
+				display: none
+				border: 1px solid #ccc
+				.rule_item
+					margin-bottom: 10px
+				.bot_action
+					position: relative
+					.btn
+						margin-left: 500px
+			.field
+				padding: 12px 0
+				position: relative
+				-webkit-user-select: none
+				-moz-user-select: none
+				-ms-user-select: none
+				-o-user-select: none
+				user-select: none
+				input[readonly],input.t140
+					width: 140px
+					background: #fff
+					cursor: default
+				input
+					width: 366px
+					margin: 0
+					border-radius: 0
+				.tips
+					font-size: 12px
+					padding:
+						left: 82px
+					line-height: 20px
+					position: absolute
+				span.err_tip2
+					position: absolute
+					right: 0
+					color: red
+			span.val 
+				padding-left: 20px
+			
+			.line
+				border-bottom: 1px dashed #ddd
+				padding: 10px
+				label.radio,label.checkbox
+					cursor: pointer
+					display: inline-block
+					margin: 0
+					vertical-align: middle
+			.action
+				margin-top: 10px
+				input,span.btn
+					width: 200px
+			#tip_bar
+				background: #0c92e6
+				color: white
+				font-size: 14px
+				font-weight: bold
+				padding: 10px 20px
+
+			.slider
+				height: 40px
+				width: 366px
+				margin-left: 80px
+				position: absolute
+				top: 12px
+				border: 1px solid #ccc
+				border-left: none
+
+				.btn-group
+					position: absolute
+					right: 2px 
+					top: 1px
+					.mbtn
+						width: 30px
+						height: 17px
+						cursor: pointer
+					.m-top					
+						background: asset-url('mp/ico_39.png') no-repeat
+						&:hover
+							background: asset-url('mp/ico2_39.png') no-repeat
+					.m-down
+						margin-top: 1px
+						background: asset-url('mp/ico2_45.png') no-repeat
+						&:hover
+							background: asset-url('mp/ico_45.png') no-repeat
+				#number-slider
+					width: 290px
+					margin-top: 13px
+					margin-left: 20px
+				.num_wrap
+					position: absolute
+					top: -10px
+					left: 10px
+					width: 310px
+					span.num
+						display: none
+						text-align: center
+						width: 100px
+						background: #ddd
+						height: 40px
+						line-height: 40px
+						position: absolute
+						margin-left: -35px
+						top: -30px
+						right: 0px
+				.set_rule
+					position: absolute
+					right: -205px
+					top: 0
+				.ui-slider-range
+					background: #348cdd
+				.ui-state-default
+					background: asset-url('img/new-case_21.png') no-repeat
+					border: none
+					width: 25px 
+					height: 24px
+					top: -0.4em
+					outline: none
+				input
+					display: none
+			.form_textarea
+				position: relative
+				label
+					position: absolute
+					display: inline-block
+					//color: #00528b
+					height: 70px
+					line-height: 58px
+					border-radius: 4px 0 0 4px
+					text-align: center
+					text-shadow: 0 1px 0 #ffffff
+					background-color: #eeeeee
+					border: 1px solid #ccc
+					margin-left: 0
+					border-right: 0
+				.error-tip
+					text-align: right
+					color: red
+					display: none
+				.textarea
+					margin-left: 80px
+					position: relative
+					.content_tip
+						color: #999
+						position: absolute
+						right: 10px
+						bottom: 5px
+				.push_mobiles
+					width: 365px
+					.content_tip
+						right: 20px
+				textarea
+					resize: none
+					width: 100%
+					height: 70px
+					display: inline-block
+					border-radius: 0 4px 4px 0
+					min-width: 490px
+	ul#top_navigate
+		list-style: none
+		width: 100%
+		margin: 0
+		padding: 0
+		min-width: 820px
+		border-bottom: 1px solid #ddd
+		li
+			list-style-type: none
+			margin: 0
+			display: table-cell
+			min-width: 200px			
+			height: 60px
+			line-height: 60px
+			width: 1%
+			font-size: 22px
+			position: relative
+			span.split
+				width: 30px
+				height: 59px
+				background: asset-url('mp/ico_17.png') no-repeat
+				position: absolute
+				top: 0
+			span.ico
+				width: 45px
+				height: 59px
+				position: absolute
+				top: 0	
+		li.left
+			text-align: left
+			padding-left: 70px		
+			span.ico
+				left: 20px 
+				background: asset-url('mp/ico_15.png') no-repeat			
+			span.split
+				right: 80px
+		li.left.active
+			color: #004280
+			span.ico
+				background: asset-url('mp/ico_15.png') no-repeat
+		li.center
+			text-align: center
+			span.ico
+				background: asset-url('mp/ico2_19.png') no-repeat
+				right: 50%
+				margin-right: 60px 			
+			span.split
+				right: -60px
+		li.center.active
+			color: #004280
+			span.ico
+				background: asset-url('mp/ico_19.png') no-repeat
+		li.right
+			text-align: right
+			padding-right: 60px
+			span.ico
+				background: asset-url('mp/ico_21.png') no-repeat
+				right: 180px 
+		li.right.active
+			color: #004280
+			span.ico
+				background: asset-url('mp/ico2_21.png') no-repeat
