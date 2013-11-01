@@ -9,8 +9,8 @@ class window.SmartMerchant.SpReportView extends SmartMerchant.View
 		@model.fetch
 			url: "/sp_reports/#{@mod_id}/summary"
 			success: (data) =>
-				template = @template(data.toJSON())			
-				@$el.html(template)	
+				template = @template(data.toJSON())
+				@$el.html(template)
 				@setup_chart(data.get("chart_data"),data.get("begin_date").split("-"))
 				@render_detail()
 		this
@@ -50,11 +50,11 @@ class window.SmartMerchant.SpReportView extends SmartMerchant.View
 				title:
 					text: "发送量"
 					margin: 20
-			plotOptions: 
-				spline: 
+			plotOptions:
+				spline:
 					fillColor: null
 					fillOpacity: 0
-					marker: 
+					marker:
 						fillColor: '#FFFFFF'
 						lineWidth: 2
 						lineColor: null
@@ -67,11 +67,11 @@ class window.SmartMerchant.SpReportView extends SmartMerchant.View
 				xDateFormat: "%Y-%m-%d"
 				valueSuffix: "条"
 				headerFormat: '<span style="font-size: 14px">{point.key}</span><br/>'
-			legend: 
+			legend:
 				enabled: false
 			series:[
 				name: '推送'
 				pointInterval: 24 * 3600 * 1000
-				pointStart: Date.UTC(parseInt(begin_date[0]), parseInt(begin_date[1]) - 1, parseInt(begin_date[2]))
+				pointStart: Date.UTC(Number(begin_date[0]), Number(begin_date[1]) - 1, Number(begin_date[2]))
 				data: data
 			]

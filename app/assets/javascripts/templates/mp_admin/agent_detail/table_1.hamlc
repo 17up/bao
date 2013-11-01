@@ -1,0 +1,34 @@
+.top_action
+	%span.btn.t3.edit
+		编辑
+.info_container
+	.field
+		%label
+			代理商名称：
+		%span.val
+			= @mch_name
+	.field
+		%label
+			所在区域：
+		%span.val
+			= @city_name
+	.field.text_area
+		%label
+			代理商简介：
+		%p.val
+			= @mch_info
+	.field
+		%label
+			工商注册公司名：
+		%span.val
+			= @company_name
+	.field
+		%label
+			商户地址：
+		%span.val
+			= @address
+	.field
+		%label
+			联系电话：
+		%span.val
+			= @tel

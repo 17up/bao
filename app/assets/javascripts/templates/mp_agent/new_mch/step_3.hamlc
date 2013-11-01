@@ -1,0 +1,21 @@
+.title
+	3、绑定套餐
+%form#step_3{:action => "/merchants/#{@id}/bind_package"}(data-remote="true" method="post")
+	.field
+		%label
+			商户名称
+		%span.val
+			= @mch_name
+		%label
+			工商注册公司名
+		%span.val
+			= @company_name
+	.field.form-inline.input-group
+		%label.input-group-addon(for="package_id")
+			请绑定套餐
+		%select#package_id.form-control(name="package_id")
+
+	.action
+		%span.btn.btn-default.back_step_2
+			上一步
+		%input.btn.btn-primary(type="submit" value="提交")

@@ -1,0 +1,21 @@
+%table.table.table-hover.table-striped.fixed
+	%thead
+		%tr
+			%th.shrink
+				%input.toggle(type="checkbox")
+			%th
+				商户名称
+			%th
+				帐号
+			%th
+				套餐信息
+			%th
+				套餐使用期限
+			%th
+				商户信息
+			%th
+				商户状态
+			%th
+				帐号管理
+.text-right
+	!= @pagination_str

@@ -3,10 +3,7 @@
 module Nexus
   class PlanSeq    
     def after_save r
-      if r.plan_code.blank?
-        r.update_attributes plan_code: gen_seq(r)
-        # r.programs.update_all program_code: r.plan_code
-      end
+      r.update_attributes plan_code: gen_seq(r) if r.plan_code.blank?
     end
     
     private 

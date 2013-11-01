@@ -1,8 +1,4 @@
 class MpController < ApplicationController
-	before_filter :authenticate_member!
-  def test
-    render_json 0,"ok"
-  end
 
 	def consume
 		@store = current_member.stores.any? ? current_member.stores.first : Mp::Store.find(5)

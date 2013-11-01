@@ -7,7 +7,7 @@
 		短信营销
 	= "-"
 	%span.text
-		- if @p_type is 2
+		- if @p_type is 5
 			个性化名单推送
 		- else
 			自定义名单推送
@@ -40,6 +40,18 @@
 				推送文案
 			%span.val
 				= @push_content
+		- if @replies
+			- for item,i in @replies
+				.field
+					%label
+						上行内容
+					%span.val
+						= item.up_code
+					%br
+					%label
+						下行文案
+					%span.val
+						= item.down_content
 		.action
 			%span.btn.btn-default.back
 				返回

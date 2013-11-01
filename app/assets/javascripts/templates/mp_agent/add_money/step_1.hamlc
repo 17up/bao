@@ -1,0 +1,25 @@
+.title
+	套餐充值
+%form#add_money_form(action="/orders" data-remote="true" method="post")
+	%table#mt_1.table.table-hover.table-striped.text_center
+		%thead
+			%tr
+				%th
+					充值商户
+				%th
+					购买套餐内容
+				%th
+					购买套餐数量
+				%th
+					充值金额
+				%th
+					操作
+
+	.action
+		.count_sm
+			小计：
+			%span.count_num
+			元
+		%input.btn.btn-primary(type="submit" value="提交")
+		%span.btn.btn-default.cancel
+			取消

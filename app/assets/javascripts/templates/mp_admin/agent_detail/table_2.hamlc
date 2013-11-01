@@ -1,0 +1,21 @@
+%table.table.table-hover.table-striped.fixed.text_center
+	%thead
+		%tr
+			%th
+				门店名
+			%th
+				已购套餐
+			%th
+				套餐有效期
+			%th
+				备注
+	- for item in @stores
+		%tr
+			%td
+				= item.name
+			%td
+				= item.package_name
+			%td
+				= item.package_times
+			%td
+				= item.package_status

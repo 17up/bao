@@ -10,5 +10,8 @@
  *
  *= require_self
  *= require_tree ./lib
+ *= require_tree ./admin
  *= require_tree .
  */
+
+.red{color: red;}

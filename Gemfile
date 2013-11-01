@@ -23,8 +23,6 @@ gem 'protected_attributes'
 gem 'carrierwave'
 gem "mini_magick"
 
-gem "unicorn"
-
 #中文转拼音
 gem 'ruby-pinyin'
 
@@ -32,15 +30,15 @@ gem 'ruby-pinyin'
 gem "devise"
 gem 'cancan'
 
-#记录异常信息
-gem 'exception_logger', :git => 'git://github.com/martinx/exception_logger.git'
-
-#redis相关操作
-gem 'redis'
-gem 'sidekiq'
-
 #批量操作数据
 gem 'activerecord-import'
+# gem 'squeel'
+
+# Cron jobs
+gem 'whenever', :require => false
+
+gem 'redis'
+
 
 gem 'therubyracer'
 gem 'uglifier'
@@ -50,28 +48,39 @@ gem "less-rails"
 gem 'coffee-rails'
 gem 'sass-rails'
 gem "twitter-bootstrap-rails"
-gem "rails-backbone"
 gem 'bourbon'
 gem 'haml'
 gem 'haml-rails'
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.1.4'
 
 gem 'jbuilder'
 
 gem "remotipart", '~> 1.0'
 gem "httparty"
 
-group :development, :test do
-  #gem 'rspec-rails', '~> 2.10.0'
-  gem 'factory_girl_rails'
-  gem 'quiet_assets'
+# YAML settings
+gem "settingslogic", "~> 2.0.9"
+
+gem 'mongoid', github: "mongoid/mongoid"
+gem 'bson_ext'
+
+group :development do
+  # gem 'rspec-rails'
   gem 'database_cleaner'
+  gem 'quiet_assets'
   gem 'capistrano'
   gem "rvm-capistrano"
   gem 'thin'
+  #profile
+  #gem 'rack-mini-profiler'
 end
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+group :test do
+  gem 'factory_girl_rails'
 end
+
+group :production do
+  gem "unicorn"
+end
+
+gem 'exception_logger', github: 'martinx/exception_logger'

@@ -1,0 +1,7 @@
+- for op in @collection
+	- if _.isArray(op)
+		%option{:value => op[0]}
+			= op[1]
+	- else
+		%option{:value => op}
+			= op

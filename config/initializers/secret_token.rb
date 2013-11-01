@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Mp::Application.config.secret_key_base = '7d146ac352cf8db98756173ad0762f2b84b61b42437dddcc03eeaa64bdfad03c2f2261f602926991d1e70c30f06a25f9c3ffdcdfef2185a3493876f13c5d3ca7'
+Mp::Application.config.secret_key_base = '7d146ac352cf8db98756173ad0762f2184b61b42437dddcc03eeaa64bdfad03c2f2261f602926991d1e70c30f06a25f9c3ffdcdfef2185a3493876f13c5d3ca7'

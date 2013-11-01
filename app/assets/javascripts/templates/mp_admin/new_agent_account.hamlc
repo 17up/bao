@@ -1,0 +1,24 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		代理帐户管理
+	= "-"
+	%span.text
+		新建代理账户
+.main
+	.nav-title
+		新建代理账户
+	.main-container
+		.section
+			- if @step is 1
+				.step_1
+					!= JST['mp_admin/new_agent/step_1'](@)
+			- if @step is 2
+				.step_2
+					!= JST['mp_admin/new_agent/step_2'](@)
+			- if @step is 3
+				.step_3
+					!= JST['mp_admin/new_agent/step_3'](@)

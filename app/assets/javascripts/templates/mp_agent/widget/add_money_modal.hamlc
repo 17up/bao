@@ -1,0 +1,20 @@
+#add_money_modal.modal.fade
+	.modal-dialog
+		.modal-content
+			.modal-header
+				%button.close(type="button" data-dismiss="modal" aria-hidden="true")
+					&times;
+				%h4.modal-title
+					为本账户充值
+			%form#add_money_form.form-inline(action="/orders" method="post" data-remote="true")
+				%input(type="hidden" name="type" value="self")
+				.modal-body
+					.control-group
+						.input-prepend
+							%span.add-on
+								充值金额：
+							%input.num(type="number" name="number" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')")
+							元
+
+				.modal-footer
+					%input.btn.btn-primary.confirm(type="submit" value="提交")

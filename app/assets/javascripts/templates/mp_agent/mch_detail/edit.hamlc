@@ -1,0 +1,20 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		商户管理
+	= "-"
+	%span.text
+		商户基本信息编辑
+.main
+	.nav-title
+		商户基本信息
+	.main-container
+		%form#mch_info_form{:action => "/merchants/#{@id}/update"}(data-remote="true" method="post" data-type="json")
+			!= JST['mp_agent/widget/mch_info'](@)
+			.action
+				%input.btn.btn-primary(type="submit" value="确定")
+				%span.btn.btn-default.cancel
+					返回

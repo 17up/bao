@@ -1,0 +1,1 @@
+%iframe{:src => "#{@merchant_src}?id=#{@merchant_id}"}(frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes")

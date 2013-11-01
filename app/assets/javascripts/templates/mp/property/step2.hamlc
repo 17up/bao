@@ -1,16 +1,17 @@
-#tip_bar
-	符合您筛选条件的可发送用户大于
-	= @count
-	人，请制定推送规则！
+- if @count
+	#tip_bar
+		符合您筛选条件的可发送用户大于
+		= @count
+		人，请制定推送规则！
 %form#step_2(action="/plan/personals/preview" data-remote="true" method="post")
-	.field.form-inline.title
-		%label(for="program_name")
+	.field.form-inline.title.input-group
+		%label.input-group-addon(for="program_name")
 			方案名称
 		%input#program_name.form-control{:value => @program_name}(type="text" name="program_name" placeholder="请为本方案起个好记的名字吧")
 		.tips
 			4-25个汉字、字母、数字及符号
 		%span.err_tip
-	.field.form-inline.clearfix
+	.field.form-inline
 		!= JST['mp/widget/begin_end_date'](begin_date: @begin_date,end_date: @end_date)
 		%span.err_tip
 	.field
@@ -34,7 +35,6 @@
 		.tips
 			每64个字符（包括汉字、数字、字母、符号等）为1条短信
 		%span.err_tip2
-
 	.field.table_view
 		.title
 			推送计划成本
@@ -57,7 +57,7 @@
 			%li.buy_number
 				.big_num
 					- num = @push_number - @personal
-					= if num > 0 then "#{num}条" else "0条"				
+					= if num > 0 then "#{num}条" else "0条"
 				.desc
 					您还需要购买个性化短信
 	.field
@@ -73,3 +73,5 @@
 		%span.btn.btn-default.back_step_1
 			上一步
 		%input.btn.btn-primary(type="submit" value="预览")
+		.err_tip
+

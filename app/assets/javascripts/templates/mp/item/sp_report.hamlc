@@ -5,19 +5,22 @@
 %td
 	= @type
 %td
-	= @status
+	= @status.name
 %td
 	%span.btn.check.t1
 		查看
-	%span.btn.edit.t1
-		编辑
-%td
+	- unless @uneditable
+		- if @status.code is 0
+			%span.btn.edit.t1
+				编辑
+%td.hide
 	%span.btn.stop.t1
 		终止
 %td
-	%span.btn.check_sp_report.t1
-		查看
-- if @p_type is 2
-	%td
+	- if @report_execute
+		%span.btn.check_sp_report.t1
+			查看
+%td
+	- if @report_effect
 		%span.btn.check_sp_result.t1
 			查看

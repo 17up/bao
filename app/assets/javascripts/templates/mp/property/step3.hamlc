@@ -6,7 +6,8 @@
 	%input{:value => @push_time}(type="hidden" name="push_time[]")
 	%input{:value => @push_date}(type="hidden" name="push_date[]")
 	%input{:value => @push_content}(type="hidden" name="push_content")
-	%input{:value => 2}(type="hidden" name="program_type")
+	- if @program_id
+		%input{:value => @program_id}(type="hidden" name="program_id")
 	.field
 		%label
 			方案名称

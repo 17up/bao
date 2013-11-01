@@ -12,11 +12,23 @@ table.fixed
 table.fixed
 	td
 		overflow: hidden
-
+.shrink
+	width: 40px
 a img, img
 	border: none
 	vertical-align: middle
 
+.loading2
+	z-index: 99999
+	font-size: 80px
+	position: fixed
+	top: 50%
+	margin-top: -40px
+	left: 50%
+	margin-left: -220px
+	padding: 30px
+	.small
+		font-size: 40px
 a
 	text-decoration: none
 	color: #5185bc
@@ -27,23 +39,26 @@ a
 	background: asset-url("mp/t1.png") no-repeat
 	width: 66px
 	height: 35px
+	border: none
 .btn.t3
 	background: asset-url("mp/t3.png") no-repeat
 	width: 196px
 	height: 38px
 	line-height: 25px
+	border: none
 .btn.t2
 	background: asset-url("mp/t2.png") no-repeat
 	width: 158px
 	height: 38px
 	color: white
 	line-height: 25px
+	border: none
 .text_center
 	text-align: center
 
 .text_right
 	text-align: right
-.hide 
+.hide
 	display: none
 
 .as_link
@@ -53,7 +68,7 @@ a
 	@include clearfix
 .disable_event
 	pointer-events: none
-	
+
 .hiddenfile
 	width: 0px
 	height: 0px
@@ -69,11 +84,11 @@ a
 .head_title
 	padding-bottom: 10px
 	border-bottom: 1px solid #ddd
-.main 
+.main
 	padding: 0
 	.headline
 		position: relative
-		.title 
+		.title
 			font-size: 20px
 			padding: 10px
 #container
@@ -83,6 +98,9 @@ a
 #login_form
 	margin-top: 100px
 	margin-bottom: 100px
+	.ie_tip
+		text-align: center
+		color: red
 	.control-group
 		margin-top: 10px
 	#top_login_tip
@@ -121,4 +139,8 @@ a
 .modal-header
 	background: #169ef4
 	color: white
-	
+.datetimepicker-hours
+	th.prev,th.next
+		pointer-events: none
+		i
+			color: white

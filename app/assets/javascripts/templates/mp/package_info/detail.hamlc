@@ -1,0 +1,63 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		套餐使用查询
+	= "-"
+	%span.text
+		= @name
+.main
+	.main-container
+		.header.clearfix
+			.name.pull-left
+			.pull-right
+				%span.btn.t3.back
+					返回
+		.table1
+			.t_title
+				购买信息
+			%table.table.table-hover.table-striped.fixed.text_center
+				%thead
+					%tr
+						%th
+							购买时间
+						%th
+							购买短信总数（条）
+						%th
+							套餐类型
+				- for item in @buy
+					%tr
+						%td
+							= item.created_at
+						%td
+							= item.count
+						%td
+							= item.type
+		.table2
+			.t_title
+				使用信息
+			%table.table.table-hover.table-striped.fixed.text_center
+				%thead
+					%tr
+						%th
+							发送方案名称
+						%th
+							发送时间
+						%th
+							计划发送数量（条）
+						%th
+							实际发送数量（条）
+				- for item in @usage.data
+					%tr
+						%td
+							= item.name
+						%td
+							= item.created_at
+						%td
+							= item.plan
+						%td
+							= item.used
+			.text-right
+				!= @usage.pagination_str

@@ -5,11 +5,13 @@
 #= require hamlcoffee
 #= require underscore
 #= require backbone
-#= require backbone_rails_sync
-#= require_tree ./lib 
+#= require_tree ./lib
 #= require_tree ./templates
 #= require_tree ./backbone/models
 #= require ./backbone/sm
+#= require ./backbone/sm_agent
+#= require ./backbone/sm_admin
+
 
 $ ->
 	$("a[rel=popover]").popover()
@@ -27,6 +29,6 @@ $ ->
 	if $init.length is 1
 		js_class = $init.data().js
 		new window[js_class]
-	
-	
-	
+
+
+

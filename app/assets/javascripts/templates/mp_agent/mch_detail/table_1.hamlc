@@ -1,0 +1,25 @@
+%table.table.table-hover.table-striped.fixed.text_center
+	%thead
+		%tr
+			%th
+				已购套餐
+			%th
+				套餐功能
+			%th
+				短信使用额度
+			%th
+				可用短信余额
+			%th
+				套餐有效期
+	- for item in @package
+		%tr
+			%td
+				= item.name
+			%td
+				= item.desc
+			%td
+				= item.count
+			%td
+				= item.remain
+			%td
+				= item.times

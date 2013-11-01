@@ -1,0 +1,34 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		短信营销
+	= "-"
+	%span.text
+		= @push_title
+.main
+	.nav-title
+		= @push_title
+	.main-container
+		%ul#top_navigate
+			%li.left.active.split
+				%span.ico
+				条件筛选
+			%li.center.split{:class => ('active' if @step > 1)}
+				%span.ico
+				参数设置
+			%li.right{:class => ('active' if @step > 2)}
+				%span.ico
+				发布方案
+		.section
+			- if @step is 1
+				.step_1
+					!= JST['mp_admin/push_1/step_1'](@)
+			- if @step is 2
+				.step_2
+					!= JST['mp_admin/push_1/step_2'](@)
+			- if @step is 3
+				.step_3
+					!= JST['mp_admin/push_1/step_3'](@)

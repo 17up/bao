@@ -6,7 +6,7 @@ class window.Utils
 		if type isnt ''
 			$alert.addClass "alert-#{type} flash"
 		$alert.slideDown()
-		fuc = -> 
+		fuc = ->
 			$alert.slideUp ->
 				$(@).remove()
 		setTimeout fuc,5000
@@ -20,6 +20,9 @@ class window.Utils
 	@loaded: ($item) ->
 		$item.stop(true).css "opacity",1
 		$item.removeClass 'disable_event'
+	@loading2: ($item) ->
+		$item.append JST['widget/loading']()
+		$(".loading2",$item)
 	@chart1: ($chart,d1,d2,d3) ->
 		number = Number(d1) + Number(d2) + Number(d3)
 		$chart.highcharts
@@ -39,7 +42,7 @@ class window.Utils
 				categories: ['推送方式']
 				labels:
 					enabled: false
-			yAxis: 
+			yAxis:
 				title:
 					enabled: false
 			credits:
@@ -50,24 +53,24 @@ class window.Utils
 				# positioner: ->
 				# 	x: 15
 				# 	y: -10
-			legend: 
+			legend:
 				enabled: false
-			plotOptions: 
-				bar: 
+			plotOptions:
+				bar:
 					pointPadding: 0.3
-					dataLabels: 
+					dataLabels:
 						enabled: true
 						style:
 							fontSize: "14px"
 			series: [{
 				name: '目标新客户'
-				dataLabels: 
+				dataLabels:
 					color: '#0bf'
 					formatter: ->
 						"主动推送目标新客户: " + this.y
 				# events:
 				# 	mouseOver: ->
-				# 		$(".preview-panel").show().css 
+				# 		$(".preview-panel").show().css
 				# 			"top": "35px"
 				# 			"left": "0px"
 				# 		$(".preview-panel .content").html(this.name + "<br/>按照预定发送时间与数量主动推送短信")
@@ -78,13 +81,13 @@ class window.Utils
 
 			},{
 				name: '回头客'
-				dataLabels: 
+				dataLabels:
 					color: '#8bbc21'
 					formatter: ->
 						"主动推送回头客: " + this.y
 				# events:
 				# 	mouseOver: ->
-				# 		$(".preview-panel").show().css 
+				# 		$(".preview-panel").show().css
 				# 			"top": "35px"
 				# 			"left": "0px"
 				# 		$(".preview-panel .content").html(this.name + "<br/>按照预定发送时间与数量主动推送短信")
@@ -96,13 +99,13 @@ class window.Utils
 				name: '刷卡触发'
 				# events:
 				# 	mouseOver: ->
-				# 		$(".preview-panel").show().css 
+				# 		$(".preview-panel").show().css
 				# 			"top": "-15px"
 				# 			"left": "0px"
 				# 		$(".preview-panel .content").html(this.name + "<br/>在您所在商圈其他商户刷卡消费，即触发推送短信")
 				# 	mouseOut: ->
 				# 		$(".preview-panel").hide()
-				dataLabels: 
+				dataLabels:
 					color: '#4897f1'
 					formatter: ->
 						"刷卡触发: " + this.y

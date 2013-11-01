@@ -1,0 +1,24 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		商户信息
+	= "-"
+	%span.text
+		新建商户账户
+.main
+	.nav-title
+		新建商户账户
+	.main-container
+		.section
+			- if @step is 1
+				.step_1
+					!= JST['mp_agent/new_mch/step_1'](@)
+			- if @step is 2
+				.step_2
+					!= JST['mp_agent/new_mch/step_2'](@)
+			- if @step is 3
+				.step_3
+					!= JST['mp_agent/new_mch/step_3'](@)

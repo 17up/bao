@@ -53,7 +53,7 @@ task :link_shared_files, :roles => :web do
 end
 
 # task :compile_assets, :roles => :web do
-#   run "cd #{release_path} && bundle exec rake RAILS_ENV=production RAILS_GROUPS=assets assets:clean assets:precompile"      
+#   run "cd #{release_path} && bundle exec rake RAILS_ENV=production RAILS_GROUPS=assets assets:clean assets:precompile"
 # end
 
 #task :sync_assets_to_cdn, :roles => :web do

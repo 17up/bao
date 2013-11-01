@@ -10,7 +10,7 @@ class window.SmartMerchant.ShopCsView extends SmartMerchant.View
 				template = @template(store_name: data.get("store_name"))
 				@$el.html(template)
 				date_start = data.get("date")[0]
-				@model.set 
+				@model.set
 					rc7: data.get("rc7")
 					rc30: data.get("sum")
 				@setup_chart(data.get("consume"),date_start.split("-"),data.get("sum"))
@@ -45,11 +45,11 @@ class window.SmartMerchant.ShopCsView extends SmartMerchant.View
 				title:
 					text: "消费金额（元）"
 					margin: 20
-			plotOptions: 
-				spline: 
+			plotOptions:
+				spline:
 					fillColor: null
 					fillOpacity: 0
-					marker: 
+					marker:
 						fillColor: '#FFFFFF'
 						lineWidth: 2
 						lineColor: null
@@ -62,12 +62,12 @@ class window.SmartMerchant.ShopCsView extends SmartMerchant.View
 				xDateFormat: "%Y年%m月%d日"
 				valueSuffix: "元"
 				headerFormat: '<span style="font-size: 14px">{point.key}</span><br/>'
-			legend: 
+			legend:
 				enabled: false
 			series:[
 				name: '消费'
 				pointInterval: 24 * 3600 * 1000
-				pointStart: Date.UTC(parseInt(date[0]), parseInt(date[1]) - 1, parseInt(date[2]))
+				pointStart: Date.UTC(Number(date[0]), Number(date[1]) - 1, Number(date[2]))
 				data: data
 			]
 		today = $.date().adjust("D", -1).date()
@@ -91,7 +91,7 @@ class window.SmartMerchant.ShopCsView extends SmartMerchant.View
 		tm = today.getMonth()
 		td = today.getDate()
 		switch $target.val()
-			when "yesterday"	
+			when "yesterday"
 				yesterday = $.date().adjust("D", -1).date()
 				y = yesterday.getFullYear()
 				m = yesterday.getMonth()
@@ -130,13 +130,13 @@ class window.SmartMerchant.ShopCsView extends SmartMerchant.View
 				text: '本商户客单价金额分布'
 			xAxis:
 				categories: ['0-100元','101-500元','501-1000元','1001-2000元','2000元以上']
-			yAxis: 
+			yAxis:
 				min: 0
-				title: 
+				title:
 					text: '金额百分比'
 					align: 'high'
 					margin: 20
-				labels: 
+				labels:
 					overflow: 'justify'
 					format: "{value}%"
 			credits:
@@ -147,11 +147,11 @@ class window.SmartMerchant.ShopCsView extends SmartMerchant.View
 				style:
 					fontSize: '14px'
 					padding: 8
-			legend: 
+			legend:
 				enabled: false
-			plotOptions: 
+			plotOptions:
 				bar:
-					dataLabels: 
+					dataLabels:
 						enabled: true
 						format: "{y}%"
 			series: [{
@@ -165,21 +165,21 @@ class window.SmartMerchant.ShopCsView extends SmartMerchant.View
 				plotBackgroundColor: null
 				plotBorderWidth: null
 				plotShadow: false
-			title: 
+			title:
 				text: '交易分布'
-			tooltip:			
+			tooltip:
 				style:
 					fontSize: '14px'
 					padding: 8
 				pointFormat: '{series.name}: <b>{point.percentage}%</b>'
 				percentageDecimals: 1
 				headerFormat: '<span style="font-size: 14px">{point.key}</span><br/>'
-			plotOptions: 
-				pie: 
+			plotOptions:
+				pie:
 					animation: true
 					allowPointSelect: true
 					cursor: 'pointer'
-					dataLabels: 
+					dataLabels:
 						enabled: true
 						color: '#000000'
 						connectorColor: '#000000'

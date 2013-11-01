@@ -1,0 +1,6 @@
+.title
+	1、添加商户基本信息
+%form#step_1{:action => "/merchants"}(data-remote="true" method="post" data-type="json")
+	!= JST['mp_agent/widget/mch_info'](@)
+	.action
+		%input.btn.btn-primary(type="submit" value="下一步")

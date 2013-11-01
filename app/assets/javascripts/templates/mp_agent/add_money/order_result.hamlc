@@ -1,0 +1,54 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		商户管理
+	= "-"
+	%span.text
+		充值
+.main
+	.nav-title
+		提交订单
+	.main-container
+		.header.clearfix
+			.tip.pull-left
+				订单提交成功！
+			.pull-right
+				%span.btn.t3.back
+					返回
+		.order
+			.order_number
+				订单号：
+				= @order_code
+			%table.table.table-hover.table-striped.text_center
+				%thead
+					%tr
+						%th
+							充值商户名称
+						%th
+							购买套餐内容
+						%th
+							购买套餐数量
+						%th
+							充值金额（元）
+				- for item in @order_items
+					%tr
+						%td
+							= item.merchant_name
+						%td
+							= item.package_name
+						%td
+							= item.count
+							万条
+						%td
+							= item.total
+
+				%tr
+					%td
+						合计
+					%td
+					%td
+					%td
+						= @price

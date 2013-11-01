@@ -1,0 +1,15 @@
+%table.table.table-hover.table-striped.fixed
+	%thead
+		%tr
+			%th
+				代理商名称
+			%th
+				帐号
+			%th
+				创建时间
+			%th
+				代理商信息
+			%th
+				帐号管理
+.text-right
+	!= @pagination_str

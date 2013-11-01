@@ -1,0 +1,35 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		代理账户管理
+	= "-"
+	%span.text
+		代理商信息管理
+.main
+	.nav-title
+		管理中心
+	.main-container
+		.header.clearfix
+			.name.pull-left
+				= @info.account_name
+			.pull-right
+				%span.btn.t3.modify_pw
+					修改帐号密码
+				%span.btn.t3.back
+					返回
+		.tabbable
+			%ul.nav.nav-tabs
+				%li.active
+					%a.tab-link(href="#tab-1" data-toggle="tab")
+						代理商基本信息
+				%li
+					%a.tab-link(href="#tab-2" data-toggle="tab")
+						所发展商户信息
+		.tab-content
+			#tab-1.tab-pane.active
+				!= JST['mp_admin/agent_detail/table_1'](@info)
+			#tab-2.tab-pane
+				!= JST['mp_admin/agent_detail/table_2'](stores: @stores)

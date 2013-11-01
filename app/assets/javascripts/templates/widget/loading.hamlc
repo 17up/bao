@@ -1,0 +1,4 @@
+.loading2.text_center
+	%span.icon-spinner.icon-spin.icon-large
+	%span.small
+		正在分析中，请稍等...

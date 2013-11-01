@@ -1,0 +1,12 @@
+#select_mch_wrap
+	%span
+		目标商户：
+	%select.chzn-select#mch_name{:value => @merchant_id}(data-placeholder="选择一个商户" name="mch_id")
+%form#step_1{:action => @url_filter_user}(data-remote="true" method="post" data-type="json")
+	.selected_list
+	!= JST['mp_admin/push_1/uploader'](@)
+	- if @has_options
+		!= JST['mp_admin/push_1/options'](@)
+	.action
+		%input.btn.btn-primary(type="submit" value="下一步")
+

@@ -1,0 +1,21 @@
+%table.table.table-hover.table-striped
+	%thead
+		%tr
+			%th
+				方案名称
+			%th
+				方案提交日期
+			%th
+				发送方式
+			%th
+				方案状态
+			%th
+				方案管理
+			%th.hide
+				终止方案
+			%th
+				发送执行报告
+			%th
+				效果分析报告
+.text-right
+	!= @pagination_str

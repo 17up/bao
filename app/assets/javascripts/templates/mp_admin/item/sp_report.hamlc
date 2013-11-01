@@ -1,0 +1,30 @@
+%td
+	= @program_name
+%td
+	= @created_at
+%td
+	= @merchant_name
+	= "/"
+	= @creator
+%td
+	= @type
+%td
+	= @status.name
+%td
+	%span.btn.check.t1
+		查看
+	- if @status.code is 0
+		%span.btn.edit.t1
+			编辑
+%td.hide
+	%span.btn.stop.t1
+		终止
+
+%td
+	- if @report_execute
+		%span.btn.check_sp_report.t1
+			查看
+%td
+	- if @report_effect
+		%span.btn.check_sp_result.t1
+			查看

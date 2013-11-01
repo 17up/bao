@@ -1,10 +1,9 @@
 .spd_header
-	客单价分布
+	成交金额分布
 .sp_container
-	#chart2.chart
+	#chart5
 .spd_header
 	客户消费频次分布
-	%span.btn.export.btn-default
+	%span.btn.export.btn-default.hidden
 		导出
-.sp_container
-	!= JST['mp/month_analytics/table_2']()
+#r2_tick_freq.sp_container

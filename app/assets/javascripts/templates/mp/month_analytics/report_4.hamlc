@@ -1,0 +1,31 @@
+%table.table.table-hover.table-striped.fixed.text_center
+	%thead
+		%tr
+			%th
+				成交时间
+			%th
+				成交金额（元）
+			%th
+				商户编号
+			%th
+				终端号
+			%th
+				卡号后4位
+			%th
+				交易类型
+	- for item in @storebooks
+		%tr
+			%td
+				= item.trans_rcv_ts
+			%td
+				= item.trans_amount
+			%td
+				= item.mid
+			%td
+				= item.tid
+			%td
+				= item.card_no
+			%td
+				= item.trans_code
+.text-right
+	!= @pagination_str

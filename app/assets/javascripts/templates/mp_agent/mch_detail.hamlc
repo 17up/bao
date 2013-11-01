@@ -1,0 +1,37 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		商户管理
+.main
+	.nav-title
+		管理中心
+	.main-container
+		.header.clearfix
+			.name.pull-left
+				= @info.mch_name
+			.pull-right
+				%span.btn.t3.modify_pw
+					修改商户密码
+				%span.btn.t3.back
+					返回
+		.tabbable
+			%ul.nav.nav-tabs
+				%li.active
+					%a.tab-link(href="#tab-1" data-toggle="tab")
+						套餐使用明细
+				%li
+					%a.tab-link(href="#tab-2" data-toggle="tab")
+						商户基本信息
+				%li.hidden
+					%a.tab-link(href="#tab-3" data-toggle="tab")
+						分店信息查询
+		.tab-content
+			#tab-1.tab-pane.active
+				!= JST['mp_agent/mch_detail/table_1'](package: @package)
+			#tab-2.tab-pane
+				!= JST['mp_agent/mch_detail/table_2'](@info)
+			#tab-3.tab-pane.hide
+				!= JST['mp_agent/mch_detail/table_3']()

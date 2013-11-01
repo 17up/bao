@@ -1,36 +1,105 @@
 Mp::Application.routes.draw do
-  namespace :plan do
-    resources :personals do
-      collection do
-        get :options
-        post :filter_user
-        post :preview
-      end
+  resources :agents do
+    member do
+      post :bind_account,:freeze_agent,:restore_agent
+    end
+    
+    collection do
+      get :list
     end
   end
 
-  devise_for :members, {    
-    class_name: "Mp::Member",
-    module: :devise
-  }#:path => "mp"
+  resources :merchant_categories do
+    collection do
+      get :select
+    end
+  end
 
+  resources :orders
 
+  resources :accounts do 
+    collection do
+      get :available_sms_count
+    end
+    
+    member do
+      post :change_password
+    end
+  end
+  
+  resources :cities
+  resources :packages do
+    member do 
+      get :cal_total_price,:promo_price
+    end
+    collection do
+      get :basic_for_select,:basic,:added,:promos
+    end
+  end
+  
+  namespace :plan do
+    concern :plan_manage do
+      collection do
+        get   :options
+        post  :filter_user
+        get   :filter_user
+        post  :preview
+      end
+      
+      member do
+        get   :mobiles
+      end
+    end
+
+    resources :personals,concerns: :plan_manage
+    resources :customs  ,concerns: :plan_manage
+    resources :unions   ,concerns: :plan_manage
+    resources :plans    ,concerns: :plan_manage
+    resources :returns  ,concerns: :plan_manage
+    resources :news     ,concerns: :plan_manage
+    resources :merchants,concerns: :plan_manage
+    resources :models   ,concerns: :plan_manage
+  end
+
+  resources :name_lists do
+    collection do
+      get :mobiles
+    end
+  end
+  post '/merchants/:id/update',to: 'merchants#update'
+  resources :merchants do
+    member do
+      post :bind_account,:bind_package,:freeze_merchant,:restore_merchant,:update
+      get  :detail,:download_mid_file
+    end
+    collection do
+      get :list,:info_for_buy,:info_for_usage,:info_for_package,:info,:available_sms_count
+    end 
+  end
+  devise_for :members, class_name: "Mp::Member"#,:controllers => {:sessions => "sessions"}
+  
   resources :marketings do
     collection do
-      get :summary, :follows, :convs
+      get :summary, :follows, :convs, :weidian_detail, :weidian_follow, :weidian_conv
     end
     member do
       get :detail, :follow, :conv
     end
   end
 
-  resources :report do
+  resources :operates do
     collection do
-      get :detail,:summary
+      get :overview, :dealrecord, :feature, :dealflow, :check, :latestoverview
     end
   end
 
-  namespace :mp do 
+  resources :report do
+    collection do
+      get :detail, :summary
+    end
+  end
+
+  namespace :mp do
     get "consume"
     get "app_visit"
     get "plan_list"
@@ -38,74 +107,23 @@ Mp::Application.routes.draw do
     get "report"
     post "save_plan"
     post "preview_plan"
-    post "test"
   end
 
-  namespace :sp_result do 
+  namespace :sp_result do
     get "summary"
     get "chart"
   end
 
-  resources :sp_reports,:only => [:index] do 
-    member do 
-      get :detail,:summary
+  resources :sp_reports, :only => [:index] do
+    member do
+      get :detail, :summary, :program
     end
-  end 
+  end
 
   root :to => 'welcome#index'
-  
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-  
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  namespace :api do
+    post "store2merchant/notify"
+    get "store2merchant/weidian"
+  end
 end

@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-class WelcomeController < ApplicationController
-	before_filter :authenticate_member!
+#encoding: utf-8
 
-	def index
-	  	@title = "银联智惠宝"
-	end
-  
+class WelcomeController < ApplicationController
 end

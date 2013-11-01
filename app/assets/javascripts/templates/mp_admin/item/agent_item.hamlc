@@ -1,0 +1,18 @@
+%td
+	= @name
+%td
+	= @account_name
+%td
+	= @created_at
+%td
+	%span.btn.manage.t1
+		管理
+%td
+	- if @freezed is -1
+		= @status
+	- else if @freezed is 1
+		%span.btn.recover.t1
+			恢复
+	- else
+		%span.btn.freeze.t1
+			冻结

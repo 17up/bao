@@ -1,0 +1,55 @@
+%form#step_3{:action => @url_post}(data-remote="true" method="post")
+	%input{:value => @program_name}(type="hidden" name="name")
+	%input{:value => @begin_date}(type="hidden" name="begin_date")
+	%input{:value => @end_date}(type="hidden" name="end_date")
+	%input{:value => @push_number_perday}(type="hidden" name="push_number_perday[]")
+	%input{:value => @push_time}(type="hidden" name="push_time[]")
+	%input{:value => @push_end_time}(type="hidden" name="push_end_time[]")
+	%input{:value => @push_date}(type="hidden" name="push_date[]")
+	%input{:value => @push_content}(type="hidden" name="push_content")
+	%input{:value => @store_id}(type="hidden" name="store_id")
+	%input{:value => @token}(type="hidden" name="token")
+	- if @has_upset
+		%input{:value => @reply_end}(type="hidden" name="reply_end")
+		%input{:value => @reply_code}(type="hidden" name="reply_code[]")
+		%input{:value => @reply_content}(type="hidden" name="reply_content[]")
+	- if @program_id
+		%input{:value => @program_id}(type="hidden" name="program_id")
+	.field
+		%label
+			方案名称
+		%span.val
+			= @program_name
+	.field
+		%label
+			推送日期
+		%span.val
+			= @begin_date
+			至
+			= @end_date
+	.field
+		%label
+			推送数量
+		%span.val
+			= @push_number
+	.field
+		%label
+			推送文案
+		%span.val
+			= @push_content
+	- if @has_upset
+		- for item,i in @reply_code
+			.field
+				%label
+					上行内容
+				%span.val
+					= item
+				%br
+				%label
+					下行文案
+				%span.val
+					= @reply_content[i]
+	.action
+		%span.btn.btn-default.back_step_2
+			返回
+		%input.btn.btn-primary(type="submit" value="提交")

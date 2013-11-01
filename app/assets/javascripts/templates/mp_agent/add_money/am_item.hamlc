@@ -1,0 +1,18 @@
+%input{:value => @id}(type="hidden" name="merchant_id[]")
+%td
+	= @name
+%td
+	%select.package(name="package_id[]")
+		- for item in @packages
+			%option{:value => item[0]}
+				= item[1]
+%td
+	%input.num.spinEdit{:value => @number/10000 }(type="text"  name="count[]")
+	万条
+%td
+	%span.amount
+		0
+	元
+%td
+	%span.delete.t1.btn
+		删除

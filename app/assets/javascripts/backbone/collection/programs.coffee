@@ -3,4 +3,5 @@ class window.SmartMerchant.Programs extends Backbone.Collection
 	url: "/sp_reports"
 	parse: (resp)->
 		if resp.status is 0
-			resp.data
+			@pagination_str = resp.data.pagination_str
+			resp.data.programs

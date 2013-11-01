@@ -8,6 +8,11 @@
 		登录
 	= form_for(resource, :as => resource_name, :url => session_path(resource_name),:html => {:class => "form-horizontal"}) do |f|
 		.control-group
+			- if true
+				%p.red
+					= resource.errors.full_messages.map { |msg| content_tag(:p, msg) }.join
+					= flash[:error]
+				
 			%label(for="#member_login")
 				用户名:
 			= f.text_field :login,:placeholder => "请输入您的用户名",:required => "required",:class => "form-control"
@@ -17,6 +22,10 @@
 			= f.password_field :password,:placeholder => "请输入您的密码",:required => "required",:class => "form-control"
 		.control-group.text_center
 			%input.login_btn(type="submit" value="立即登录")
-				
+
 .index_copyright
 	沪ICP备13002437号-1    Copyright &copy; 2013 银联智惠
+:javascript
+	if(_IE){
+		$("#login_form").prepend("<p class='ie_tip'>警告！您正在使用ie低版本浏览器<br>建议您下载<a href='http://www.google.cn/intl/zh-CN/chrome/' target='blank'>chrome浏览器</a>获得最佳体验效果</p>");
+	}

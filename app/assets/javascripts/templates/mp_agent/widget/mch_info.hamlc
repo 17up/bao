@@ -1,0 +1,71 @@
+%input{:value => @id}(type="hidden" name="id")
+.field.form-inline.input-group
+	%span.input-group-addon
+		* 请输入商户名称
+	%input#mch_name.required.form-control{:value => @mch_name}(type="text" name="mch_name" placeholder="输入文本")
+	%span.desc
+		最多100个字符，支持中文、数字、字母、符号
+.field.form-inline.input-group
+	%label.input-group-addon(for="select_city")
+		请选择城市
+	%select#city_select.form-control(name="prov")
+	%select#city_2_select.form-control(name="city_id")
+.field.form-inline.input-group
+	%label.input-group-addon(for="select_catelog")
+		请选择类目
+	%select#catelog1_select.form-control(name="catelog1")
+	%select#catelog2_select.form-control(name="category_id")
+.field.form_textarea
+	%label(for="mch_info")
+		请输入商户简介
+	.textarea
+		%textarea#mch_info.form-control(name = "mch_info")
+			= @mch_info
+		.content_tip
+			%span.num2
+				0
+			= "/500字"
+
+.field.form-inline.input-group
+	%span.input-group-addon
+		公司联系电话
+	%input#tel.form-control{:value => @tel}(name="tel" type="text" placeholder="请输入公司联系电话")
+	%span.desc
+		最多100个字符，支持数字
+.field.form-inline.input-group
+	%span.input-group-addon
+		* 工商注册公司名
+	%input#company_name.required.form-control{:value => @company_name}(name="company_name" type="text" placeholder="请输入工商注册公司名" )
+	%span.desc
+		最多100个字符，支持中文、数字、字母、符号
+.field.input-group
+	%span.input-group-addon
+		* 商户地址
+	%input#address.required.form-control{:value => @address}(name="address" type="text" placeholder="请输入商户地址")
+	%span.desc
+		最多100个字符，支持中文、数字、字母、符号
+
+/ .field.form-inline.input-group
+/ 	%label.input-group-addon(for="mid")
+/ 		* 商户MID
+/ 	%input.required.form-control{:value => @mid}(name="mid" type="text" placeholder="请输入商户MID")
+/ 	%span.desc
+/ 		多个MID用逗号隔开
+/ .field.form-inline.input-group
+/ 	%label.input-group-addon(for="tid")
+/ 		* 商户POSID
+/ 	%input.required.form-control{:value => @tid}(name="tid" type="text" placeholder="请输入商户POSID")
+/ 	%span.desc
+/ 		多个POSID用逗号隔开
+.field.file.input-group
+	%span.input-group-addon
+		* 批量上传MID与POSID
+	%input.form-control.required(name="file" type="file")
+	- if @edit
+		- if @mid_attachment
+			%a.btn.t3.download_tpl{:href => "/merchants/#{@id}/download_mid_file"}(target="_blank")
+				下载文件:
+				= @mid_attachment
+	- else
+		%a.btn.t3.download_tpl(href = "/template.txt" target="_blank")
+			下载模板

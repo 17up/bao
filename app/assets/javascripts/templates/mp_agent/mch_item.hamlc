@@ -1,0 +1,24 @@
+%td
+	%input{:value => @id}(type="checkbox" name="mch_selected[]")
+%td
+	= @name
+%td
+	= @account_name
+%td
+	= @package_name
+%td
+	= @package_status
+%td
+	%span.btn.manage.t1
+		管理
+%td
+	= @status
+%td
+	- if @freezed is -1
+		= @status
+	- else if @freezed is 1
+		%span.btn.recover.t1
+			恢复
+	- else
+		%span.btn.freeze.t1
+			冻结

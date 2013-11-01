@@ -1,10 +1,23 @@
-zh-cn:
+#zh-CN.activerecord.attributes.mp.merchant.mch_name
+zh-CN:
   activerecord:
     models:
-      mp/member: "用户管理"
+      mp:
+        member: "用户管理"
 
     attributes:
-      mp/member:
-        email: "电子邮件"
-        user_name: "用户名"
-        mobile: "手机号码"
+      merchant:
+        mch_name: '商户名称'
+      agent:
+        mch_name: '代理名称'
+      mp:
+        merchant:
+          mch_name: '商户名称'
+        agent:
+          mch_name: '代理名称'
+      mp:
+        member:
+          password: '密码'
+          email: "电子邮件"
+          user_name: "账号"
+          mobile: "手机号码"

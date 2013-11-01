@@ -1,0 +1,15 @@
+%td
+	= @order_code
+%td
+	= @created_at
+%td
+	= @income
+%td
+	= @expenses
+%td
+	= @remark
+%td
+	= @status
+%td
+	%span.btn.t1.check
+		查看

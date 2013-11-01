@@ -1,0 +1,65 @@
+#------------------------------------
+# Default Config
+#------------------------------------ 
+default: &default
+  port: 3306
+  adapter: mysql2
+  encoding: utf8
+  socket: /tmp/mysql.sock
+    
+#------------------------------------
+# ZHB Config
+#------------------------------------    
+zhb: &zhb
+  <<: *default
+  host: 192.168.88.104
+  username: oss
+  password: oss
+  database: mp2_db
+
+development:
+  <<: *zhb
+
+test:
+  database: zhb_test    
+  <<: *zhb
+
+production:
+  database: zhb_production
+  <<: *zhb
+  
+#------------------------------------
+# Nexus Config
+#------------------------------------
+nexus: &nexus
+  database: nexus
+  host: 192.168.88.100
+  username: nexus
+  password: nexus
+  <<: *default
+
+nexus_development:
+  <<: *nexus
+
+nexus_production:
+  database: nexus_production  
+  <<: *nexus
+  
+nexus_test:
+  database: nexus_test    
+  <<: *nexus
+  
+#------------------------------------
+# Activity Config
+#------------------------------------  
+activity_development:
+  database: cleon_activity_development
+  <<: *zhb
+
+activity_test:
+  database: cleon_activity_test
+  <<: *zhb
+
+activity_production:
+  database: cleon_activity_production
+  <<: *zhb

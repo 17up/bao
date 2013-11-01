@@ -4,7 +4,17 @@ module Marketing
 
     %w(page_views weibo_follows weixin_follows coupon_downloads cellphone_calls tick_count tick_amount).each do |name|
       define_method(name) do |start_date, end_date|
-       Marketing::Indicator.where(_marketings_id: id,category: __callee__).where(the_day: start_date..end_date).order("the_day asc").map(&:num)
+        Hash[*(start_date..end_date).map do | day |
+            [day.to_s(:db),0]
+          end.flatten]
+        .merge(
+        Hash[*Marketing::Indicator.where(_marketings_id: id,category: __callee__).where(the_day: start_date..end_date).order("the_day asc").map do |idi|
+            [idi.the_day.to_s(:db),idi.num]
+          end.flatten])
+        .map do |key, val|
+          val
+        end
+        # Marketing::Indicator.where(_marketings_id: id,category: __callee__).where(the_day: start_date..end_date).order("the_day asc").map(&:num)
       end
     end
 

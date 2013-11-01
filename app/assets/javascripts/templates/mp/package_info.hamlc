@@ -1,0 +1,26 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		套餐使用情况查询
+.main
+	.nav-title
+		套餐使用情况查询
+	.main-container
+		%table.table.table-hover.table-striped.fixed.text_center
+			%thead
+				%tr
+					%th
+						已购套餐
+					%th
+						套餐功能
+					%th
+						短信使用额度（条）
+					%th
+						可用短信余额（条）
+					%th
+						套餐有效期
+					%th
+						操作

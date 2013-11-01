@@ -6,11 +6,14 @@
 					&times;
 				%h4.modal-title
 					添加到新名单
-			.modal-body
-				%form#send_test_msg.form-inline(method="post" data-remote="true")
+			%form#new_namelist.form-inline(action="/name_lists" method="post" data-remote="true")
+				%input(type="hidden" name="mobiles")
+				.modal-body					
 					%label
 						请为新名单命名:
 					%input.form-control(type="text" name="name")
-			.modal-footer
-				%a.btn.btn-primary.confirm(href="javascript:void(0)")
-					确定
+					.err_tip
+						
+				.modal-footer
+					%input.btn.btn-primary.confirm(type="submit" value="确定")
+						

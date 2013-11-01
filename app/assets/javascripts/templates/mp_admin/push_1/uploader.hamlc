@@ -1,0 +1,12 @@
+- if @has_custom
+	%input(type="hidden" name="token")
+	.form-inline
+		%label(for="mobile_file")
+			上传手机号码：
+		%input#mobile_file.file_uploader(type="file" name="file")
+- if @has_merchant
+	%input(type="hidden" name="token")
+	.form-inline
+		%label(for="mid_file")
+			上传MID与POSID：
+		%input#mid_file.file_uploader(type="file" name="file")

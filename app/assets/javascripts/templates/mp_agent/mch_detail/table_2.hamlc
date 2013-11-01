@@ -1,0 +1,48 @@
+.top_action
+	- if @editable
+		%span.btn.t3.edit
+			编辑
+.info_container
+	.field
+		%label
+			商户名称：
+		%span.val
+			= @mch_name
+	.field
+		%label
+			所在城市：
+		%span.val
+			= @city_name
+	.field
+		%label
+			商户类目：
+		%span.val
+			= @category_name
+	.field.text_area
+		%label
+			商户简介：
+		%p.val
+			= @mch_info
+	.field
+		%label
+			商户工商注册名：
+		%span.val
+			= @company_name
+		%label
+			商户MID:
+		%span.val
+			= @mid
+	.field
+		%label
+			商户地址：
+		%span.val
+			= @address
+		%label
+			商户POSID:
+		%span.val
+			= @tid
+	.field
+		%label
+			联系电话：
+		%span.val
+			= @tel

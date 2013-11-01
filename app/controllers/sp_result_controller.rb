@@ -1,5 +1,4 @@
 class SpResultController < ApplicationController
-	before_filter :authenticate_member!
 
 	def summary
 		filter_by_date(params[:begin_date],params[:end_date])

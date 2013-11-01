@@ -16,4 +16,3 @@
 			.iphone_wrap
 				.iphone
 				.iframe_wrap
-					%iframe(src="http://m.unionpaysmart.com/msite/merchants/4099" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes") 

@@ -1,0 +1,77 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+.main
+	.main-container
+		.panel_view
+			%ul.clearfix#agent_ul
+				%li.p1
+					%a(href="#mch_manage_list")
+						.top
+							%span.icon-mobile.icon
+							账户管理
+						.desc
+							查看账户信息
+							%span.icon-arrow
+				%li.p2
+					%a(href="#new_mch_account")
+						.top
+							%span.icon-sms.icon
+							新建商户账户
+						.desc
+							点此新建商户账户
+							%span.icon-arrow
+				%li.p3
+					%a(href="#month_analytics")
+						.top
+							%span.icon-parse.icon
+							报表管理
+						.desc
+							查看分析报告详情
+							%span.icon-arrow
+		#agent_summary
+			.nav-title.clearfix
+				您当前的账户余额：
+				%span.money
+
+				元
+				.right_panel
+					%span.btn.add_money.t2
+						为本账户充值
+			.content
+				%form#top_filter(action="/orders" data-remote="true" method="get")
+					.field.form-inline.clearfix
+						.input-group.pull-left.left
+							%label.input-group-addon(for="check_order")
+								查询订单
+							%select.form-control(name="charge_type")
+								%option(value="")
+									全部订单
+								%option(value="self")
+									收入订单
+								%option(value="merchant")
+									支出订单
+						.input-group.pull-left
+							%label.input-group-addon(for="check_status")
+								查询状态
+							%select.form-control(name="status")
+								%option(value="approve")
+									充值成功
+								%option(value="reject")
+									充值失败
+								%option(value="pending")
+									待审核
+					.field.form-inline.clearfix
+						.pull-left.date.input-group.left
+							%label.input-group-addon(for="begin_date")
+								开始日期
+							%input#begin_date.form-control{:value => @begin_date}(readonly="readonly" type="text" name="begin_at")
+						.pull-left.date.input-group
+							%label.input-group-addon(for="end_date")
+								结束日期
+							%input#end_date.form-control{:value => @end_date}(readonly="readonly" type="text" name="end_at")
+						%input.btn.t3(type="submit" value="搜索")
+		#agent_order_list
+
+	!= JST['mp_agent/widget/add_money_modal']()

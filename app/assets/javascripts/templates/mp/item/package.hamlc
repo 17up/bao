@@ -1,0 +1,13 @@
+%td
+	= @name
+%td
+	= @desc
+%td
+	= @count
+%td
+	= @remain
+%td
+	= @times
+%td
+	%span.btn.t1.detail
+		查看

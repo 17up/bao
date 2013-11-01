@@ -1,11 +1,15 @@
 class SpReportsController < ApplicationController
-	before_filter :authenticate_member!
 
 	# list view
 	def index
 		data = current_member.programs.map(&:as_short_json)
 		render_json 0,"ok",data
 	end
+
+  def program
+    program = Nexus::Program.find(params[:id])
+    render_json 0,"ok",program.as_show_json
+  end
 
 	def summary
 		program = Nexus::Program.find(params[:id])

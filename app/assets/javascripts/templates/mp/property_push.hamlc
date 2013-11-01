@@ -13,14 +13,12 @@
 		个性化筛选推送
 	.main-container
 		%ul#top_navigate
-			%li.left.active
+			%li.left.active.split
 				%span.ico
 				条件筛选
-				%span.split
-			%li.center{:class => ('active' if @step > 1)}
+			%li.center.split{:class => ('active' if @step > 1)}
 				%span.ico
 				参数设置
-				%span.split
 			%li.right{:class => ('active' if @step > 2)}
 				%span.ico
 				发布方案

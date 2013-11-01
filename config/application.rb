@@ -31,10 +31,12 @@ module Mp
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     
     #config.time_zone = 'Central Time (US & Canada)'
-    #config.time_zone = 'Beijing'
-    config.i18n.default_locale = :"zh-cn"
-    # Configure the default encoding used in templates for Ruby 1.9.
+    config.time_zone = 'Beijing'
+    config.i18n.default_locale = "zh-CN"
     config.encoding = "utf-8"
+    config.active_record.default_timezone = :local
+    config.active_record.time_zone_aware_attributes = false
+    
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
@@ -53,6 +55,8 @@ module Mp
     config.generators.helper = false
     config.generators.stylesheets = false
     config.generators.javascripts = false
-    
+    config.generators do |g| 
+      g.orm :active_record 
+    end
   end
 end

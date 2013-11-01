@@ -1,48 +1,100 @@
 #top_nav
 	%a.brand(href="/")
-		%span.text
-			演示版
+		/ %span.text
+		/ 	演示版
 	#account_cpanel.clearfix
 		.nav-item.member.pull-left
 			欢迎你,
-			= current_member.user_name
+			= current_member.user_label
 		.nav-item.logout.pull-right
 			%a(href = "/members/sign_out" data-method="delete" rel="nofollow")
 				退出系统
 	#top_bar
 #container
-	#side_nav	
+	#side_nav
 		#logo.hide
-			
+
 		%ul.side-list.top-list.hide
-			%li.nav-head 
+			%li.nav-head
 				.icon.icon-1
 				账户余额10000元
 			%li.nav-head.last
 				.icon.icon-2
 				信息管理
 		%ul.side-list
-			%li.nav-head 
+			%li.nav-head
 				.icon.icon-1
 				= link_to "首页", "#homepage"
-			%li.nav-head 
-				.icon.icon-2
-				= link_to "短信营销", "#manage_list"
-			%li
-				.icon.icon-4
-				= link_to "个性化筛选推送", "#property_push"
-			%li
-				.icon.icon-4
-				= link_to "自定义名单推送", "#custom_push"
-			%li.nav-head 
-				.icon.icon-5
-				= link_to "银联微点", "#new_app"
-			%li.nav-head 
-				.icon.icon-3
-				= link_to "月度经营分析报告", "#month_analytics"
-	
+			- if current_member.agent?
+				%li.nav-head
+					.icon.icon-2
+					= link_to "商户管理", "#mch_manage_list"
+				%li
+					.icon.icon-4
+					= link_to "新建商户", "#new_mch_account"
+			- else
+				%li.nav-head
+					.icon.icon-2
+					= link_to "短信营销", "#manage_list"
+				- if current_member.upsmart?
+					%li
+						.icon.icon-4
+						= link_to "老客户推送", "#admin_push_1"
+					%li
+						.icon.icon-4
+						= link_to "潜在客户推送", "#admin_push_2"
+					%li
+						.icon.icon-4
+						= link_to "个性化筛选推送", "#property_push"
+					%li
+						.icon.icon-4
+						= link_to "自定义名单推送", "#admin_push_4"
+					%li
+						.icon.icon-4
+						= link_to "指定商户触发推送", "#admin_push_5"
+					%li
+						.icon.icon-4
+						= link_to "模型触发推送", "#admin_push_6"
+					%li.nav-head
+						.icon.icon-2
+						= link_to "商户管理", "#mch_manage_list"
+					%li
+						.icon.icon-4
+						= link_to "新建商户", "#new_mch_account"
+					%li.nav-head
+						.icon.icon-2
+						= link_to "代理账户管理", "#agent_manage_list"
+					%li
+						.icon.icon-4
+						= link_to "新建代理账户", "#new_agent_account"
+				- else
+					%li
+						.icon.icon-4
+						= link_to "个性化筛选推送", "#property_push"
+					%li
+						.icon.icon-4
+						= link_to "自定义名单推送", "#custom_push"
+				- unless current_member.upsmart?
+					%li.nav-head
+						.icon.icon-5
+						= link_to "银联微点", "#new_app"
+					%li
+						.icon.icon-4
+						= link_to "效果统计", "#app_push"
+					%li.nav-head
+						.icon.icon-3
+						= link_to "月度经营分析报告", "#month_analytics"
+					%li.nav-head
+						.icon.icon-3
+						= link_to "套餐使用情况查询", "#package_info"
+
 	#article
 	.copyright.hide
 		沪ICP备13002437号-1    Copyright &copy; 2013 银联智惠
 - content_for :footer do
-	#init(data-js="SmartMerchant")
+	- if current_member.upsmart?
+		#init(data-js="SmartMerchantAdmin")
+	- elsif current_member.agent?
+		#init(data-js="SmartMerchantAgent")
+	- else
+		#init(data-js="SmartMerchant")

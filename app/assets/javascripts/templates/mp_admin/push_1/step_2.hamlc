@@ -1,0 +1,71 @@
+- if @no_limit
+	#tip_bar
+		= @push_title
+- else if @label
+	#tip_bar
+		符合您筛选条件的
+		= @label
+		有
+		= @count
+		人，请制定推送规则！
+- else if @count
+	#tip_bar
+		符合您筛选条件的可发送用户大于
+		= @count
+		人，请制定推送规则！
+%form#step_2{:action => @url_preview}(data-remote="true" method="post")
+	%input{:value => @program_id}(type="hidden" name="program_id")
+	.field.form-inline.title.input-group
+		%label.input-group-addon(for="program_name")
+			方案名称
+		%input#program_name.form-control{:value => @program_name}(type="text" name="program_name" placeholder="请为本方案起个好记的名字吧")
+		.tips
+			4-25个汉字、字母、数字及符号
+		%span.err_tip
+	.field.form-inline
+		!= JST['mp/widget/begin_end_date'](begin_date: @begin_date,end_date: @end_date)
+		%span.err_tip
+	.field
+		%label
+			推送数量
+		.slider
+			#number-slider
+			%input{:value => @push_number}(type="text" name="push_number")
+			.num_wrap
+				%span.num
+					1000
+					条
+			.btn-group
+				.m-top.mbtn
+				.m-down.mbtn
+			%span.btn.set_rule.t3
+				设定推送规则
+	#hidden_rule.field.form-inline
+	.field.form_textarea
+		!= JST['mp/widget/textarea'](type: "text",content: @push_content)
+		.tips
+			每64个字符（包括汉字、数字、字母、符号等）为1条短信
+		%span.err_tip2
+	#sms_upset
+		.title_checkbox
+			%label.checkbox
+				%input.condi.toggle{:checked => @has_upset}(type='checkbox' name="has_upset")
+					短信上行
+		.err_tip
+		.upset_container{:class => ('my_hide' unless @has_upset)}
+			.field.clearfix
+				.pull-left.date.input-group
+					%label.input-group-addon(for="reply_end")
+						截止日期
+					%input#reply_end.form-control{:value => @reply_end}(readonly="readonly" type="text" name="reply_end")
+				.pull-left
+					%span.btn.t3.add_sms_upset
+						新增短信上行
+			.item_list
+				!= JST['mp_admin/push_1/sms_upset_item'](@)
+	.action
+		%span.btn.btn-default.back_step_1
+			上一步
+		%input.btn.btn-primary(type="submit" value="预览")
+		.err_tip
+

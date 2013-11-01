@@ -1,0 +1,20 @@
+.nav-bar
+	%span.icon-home
+	%span.text
+		首页
+	= "-"
+	%span.text
+		代理账户管理
+.main
+	.nav-title
+		管理中心
+	.main-container
+		.top_control.clearfix
+			%form#search_mch_form.pull-left(action="/agents/list" data-remote="true" method="get")
+				.field.search.form-inline
+					%input.form-control(type="text" name="mch_name" placeholder="请输入代理商名称" required="required")
+					%input.btn.t1(type="submit" value="搜索")
+			.pull-right
+				%span.btn.t3.new_agent
+					新建代理商
+		#agent_list.list

@@ -13,23 +13,46 @@
 		自定义名单推送
 	.main-container
 		.section
-			%form#custom_form(action="/mp/test" data-remote="true" method="post")
-				.field.form-inline.title
-					%label(for="program_name")
+			%form#custom_form(action="/plan/customs" data-remote="true" method="post")
+				- if @program_id
+					%input{:value => @program_id}(type="hidden" name="program_id")
+				.field.form-inline.title.input-group
+					%label.input-group-addon(for="program_name")
 						方案名称
 					%input#program_name.form-control{:value => @program_name}(type="text" name="program_name" placeholder="请为本方案起个好记的名字吧")
 					.tips
 						4-25个汉字、字母、数字及符号
 					%span.err_tip
 				.field.form_textarea
-					!= JST['mp/widget/textarea'](type: "mobile")
+					%input{:value => @mobiles}(type="hidden" name="mobiles")
+					!= JST['mp/widget/textarea'](type: "mobile",mobiles: @mobiles)
+					.tips
+						每行请输入一个手机号码，按回车键换行
 					.action
 						%span.btn.t3.add_list
 							添加到新名单
 						%span.btn.t3.select_list
 							选择已有名单
+
 				.field.form-inline.clearfix
-					!= JST['mp/widget/begin_end_date'](begin_date: @begin_date,end_date: @end_date)
+					.pull-left.date.input-group
+						%label.input-group-addon(for="begin_date")
+							推送日期
+						%input#begin_date.form-control{:value => @begin_date}(readonly="readonly" type="text" name="begin_date")
+					.input-group.pull-left
+						%label.input-group-addon
+							发送时间
+						%select.form-control(name="push_time")
+							%option
+								9:00-12:00
+							%option
+								12:00-15:00
+							%option
+								15:00-18:00
+							%option
+								18:00-21:00
+							%option
+								21:00-24:00
 					%span.err_tip
 				.field.form_textarea
 					!= JST['mp/widget/textarea'](type: "text",content: @push_content)
@@ -38,5 +61,6 @@
 					%span.err_tip2
 				.action
 					%input.btn.btn-primary(type="submit" value="提交")
+					.err_tip
 != JST['mp/widget/add_list_modal']()
-!= JST['mp/widget/select_list_modal']()
+#select_list_modal.modal.fade

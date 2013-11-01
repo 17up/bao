@@ -5,7 +5,8 @@ class window.SmartMerchant
 	constructor: ->
 		window.route = new SmartMerchant.Router()
 		Backbone.history.start()
-
+		# $('body').delegate 'a[href^=#]', 'click', (e) ->
+  #   		e.preventDefault()
 		# adjust_copyright = ->
 		# 	height = $("#article").height() + 80
 		# 	if $(window).height() - height > 0

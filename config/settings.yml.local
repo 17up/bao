@@ -1,0 +1,33 @@
+# config/application.yml
+defaults: &defaults
+  weidian_merchant_src: http://192.168.88.219:3001/merchants/zhihuibao
+  tags:
+      - 餐饮美食
+      - 购物逛街
+      - 休闲娱乐
+      - 旅游出行
+      - 酒店住宿
+      - 教育培训
+      - 生活便利
+  level:
+    "普卡":
+      - 0
+    "银卡/金卡":
+      - 1
+      - 2
+    "白金卡/钻石卡":
+      - 3
+      - 4
+    "其它":
+      - 5
+      - 6
+
+development:
+  <<: *defaults
+  weidian_merchant_src: http://192.168.88.219:3001/merchants/zhihuibao
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

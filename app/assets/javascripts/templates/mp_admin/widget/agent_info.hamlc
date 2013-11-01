@@ -1,0 +1,47 @@
+%input{:value => @id}(type="hidden" name="id")
+.field.form-inline.input-group
+	%span.input-group-addon(for="agent_name")
+		* 请输入代理商名称
+	%input#agent_name.required.form-control{:value => @mch_name}(type="text" name="mch_name" placeholder="输入文本")
+	%span.desc
+		最多100个字符，支持中文、数字、字母、符号
+.field.form-inline.input-group
+	%label.input-group-addon(for="select_city")
+		请选择城市
+	%select#city_select.form-control(name="prov")
+	%select#city_2_select.form-control(name="city_id")
+.field.form_textarea
+	%label(for="mch_info")
+		请输入代理商简介
+	.textarea
+		%textarea#mch_info.form-control(name = "mch_info")
+			= @mch_info
+		.content_tip
+			%span.num2
+				0
+			= "/500字"
+.field.form-inline.input-group
+	%span.input-group-addon(for="tel")
+		公司联系电话
+	%input#tel.form-control{:value => @tel}(name="tel" type="text" placeholder="请输入公司联系电话")
+	%span.desc
+		最多100个字符，支持数字
+.field.form-inline.input-group
+	%span.input-group-addon(for="company_name")
+		* 工商注册公司名
+	%input#company_name.required.form-control{:value => @company_name}(name="company_name" type="text" placeholder="请输入工商注册公司名")
+	%span.desc
+		最多100个字符，支持中文、数字、字母、符号
+.field.form-inline.input-group
+	%span.input-group-addon(for="address")
+		* 公司地址
+	%input#address.required.form-control{:value => @address}(name="address" type="text" placeholder="请输入公司地址")
+	%span.desc
+		最多100个字符，支持中文、数字、字母、符号
+.field.form-inline.input-group.date
+	%label.input-group-addon
+		请输入合同期限
+	%input#begin_date.form-control{:value => @begin_at}(readonly="readonly" type="text" name="begin_at")
+	至
+	%input#end_date.form-control{:value => @end_at}(readonly="readonly" type="text" name="end_at")
+

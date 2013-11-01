@@ -41,4 +41,13 @@
 							查看效果报告
 							%span.icon-arrow
 		.chart_view
-			.chart_image
+			#summary_header.spd_header
+			#r1_summary.sp_container.table_view
+			#sp_chart
+				.spd_header
+					经营数据分布图
+				.sp_container.clearfix
+					#chart1.chart
+					#chart2.chart
+					#chart3.chart
+					#chart4.chart

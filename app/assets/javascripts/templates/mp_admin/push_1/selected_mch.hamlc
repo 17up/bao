@@ -1,0 +1,6 @@
+%label
+	目标门店：
+- for item in @stores
+	%label.radio
+		%input.condi{:value => item.store_id}(type='radio' name="store_id")
+			= item.store_name

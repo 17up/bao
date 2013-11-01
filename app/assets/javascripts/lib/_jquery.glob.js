@@ -393,7 +393,7 @@ var en = cultures["default"] = cultures.en = Globalization.extend(true, {
             firstDay: 0,
             days: {
                 // full day names
-                names: ["星期天","星期一","星期二","星期三","星期四","星期五","星期六"],
+                names: ["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
                 // abbreviated day names
                 namesAbbr: ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],
                 // shortest day names

@@ -1,0 +1,6 @@
+.title
+	1、添加代理基本信息
+%form#step_1{:action => "/agents"}(data-remote="true" method="post" data-type="json")
+	!= JST["mp_admin/widget/agent_info"](@)
+	.action
+		%input.btn.btn-primary(type="submit" value="下一步")

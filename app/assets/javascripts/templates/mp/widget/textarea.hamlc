@@ -16,9 +16,11 @@
 	%label(for="push_mobiles")
 		推送号码
 	.textarea.push_mobiles
-		%textarea#push_mobiles.form-control(name = "push_mobiles")
+		%textarea#push_mobiles.form-control(name = "push_mobiles" placeholder="18621901057")
+			= @mobiles
 		.content_tip
 			您已输入
 			%span.num4
 				0
 			个手机号
+		%span.err_tip

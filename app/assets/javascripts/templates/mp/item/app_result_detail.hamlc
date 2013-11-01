@@ -1,0 +1,28 @@
+%table.table.table-hover.table-striped.fixed.text_center
+	%thead
+		%tr
+			%th
+				日期
+			%th
+				曝光次数
+			%th
+				关注次数
+			%th
+				成交转化笔数
+			%th
+				成交转化金额（元）
+	- for item in @collection
+		%tr
+			%td
+				= item[0]
+			%td
+				= item[1]
+			%td
+				= item[2]
+			%td
+				= item[3]
+			%td
+				= item[4]
+.text-right
+	!= @pagination_str
+

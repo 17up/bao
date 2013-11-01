@@ -1,0 +1,24 @@
+.title
+	2、开通帐号
+%form#step_2{:action => "/agents/#{@id}/bind_account"}(method="post" data-remote="true")
+	.field
+		%label
+			代理商名称
+		%span.val
+			= @mch_name
+	.field.form-inline.input-group
+		%label.input-group-addon(for="mch_account")
+			代理账号
+		%input.form-control.required{:value => @mch_account}(name="mch_account" type="text" placeholder="请输入代理账号" size="25")
+		%span.desc
+			最多25个字符，支持数字、字母
+	.field.form-inline.input-group
+		%label.input-group-addon(for="password")
+			账号密码
+		%input.form-control.required{:value => @password}(name="password" type="text" placeholder="请输入账号密码" size="25")
+		%span.desc
+			最多25个字符，支持数字、字母
+	.action
+		%span.btn.btn-default.back_step_1
+			上一步
+		%input.btn.btn-primary(type="submit" value="提交")

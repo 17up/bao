@@ -1,0 +1,20 @@
+.field.form-inline.title.input-group
+	%label.input-group-addon(for="reply_code")
+		上行内容
+	%input.form-control{:value => @reply_code}(type="text" name="reply_code[]")
+.field.form_textarea
+	%label(for="reply_content")
+		下行文案
+	.textarea
+		%textarea.reply_content.form-control(name = "reply_content[]")
+			= @reply_content
+		.content_tip
+			短信条数为
+			%span.num2
+				0
+			条，您已经输入
+			%span.num3
+				0
+			个字
+	.tips
+		每64个字符（包括汉字、数字、字母、符号等）为1条短信

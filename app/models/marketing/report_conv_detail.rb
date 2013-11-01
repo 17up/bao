@@ -22,7 +22,7 @@ module Marketing
     end
 
     def format_mobile
-      mobile.to_s[0..2] + "****" + mobile.to_s[7..10]
+      "*******" + mobile.to_s[7..10]
     end
 
     def format_card

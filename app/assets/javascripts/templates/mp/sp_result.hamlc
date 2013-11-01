@@ -16,10 +16,9 @@
 		.nav-title.pull-left
 			营销效果概况
 		.filter_bar.pull-right
-			%form#sp_result_summary.form-inline{:action => @request_url}(data-remote="true" role="form")		
-				统计区间：
-				!= JST['mp/widget/begin_end_date'](begin_date: $.date().adjust("D", -30).format("yyyy-MM-dd"),end_date: $.date().adjust("D", -1).format("yyyy-MM-dd"))
-
+			%form#sp_result_summary{:action => @request_url}(data-remote="true" role="form")
+				%span.tip
+					统计区间：
 	.tabbable
 		%ul.nav.nav-tabs
 			%li.active
@@ -33,8 +32,8 @@
 					成交转化明细
 	.tab-content
 		#tab-1.tab-pane.active
-			#sp_summary			
-				.sp_container.table_view 
+			#sp_summary
+				.sp_container.table_view
 			#sp_chart
 				.sp_container.clearfix
 					#chart1.chart
@@ -44,20 +43,20 @@
 			#sp_detail
 				.spd_header
 					每日效果统计
-					%span.btn.export.btn-default
+					%span.btn.export.btn-default.hidden
 						导出
 				.sp_container
 		#tab-2.tab-pane
 			.spd_header
 				关注用户名单
-				%span.btn.export.btn-default
+				%span.btn.export.btn-default.hidden
 					导出
 			.sp_container
 		#tab-3.tab-pane
 			.spd_header
 				成交转化明细
-				%span.btn.export.btn-default
+				%span.btn.export.btn-default.hidden
 					导出
 			.sp_container
-	
-			
+
+

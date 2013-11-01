@@ -1,12 +1,15 @@
 class window.SmartMerchant.PropertyPushView extends SmartMerchant.PushProgramView
 	id: "property_push"
+	className: "push_layout"
 	template: JST['mp/property_push']
 	model: new Property()
+	per_number: 1
 	events:
 		"ajax:success #step_1": "step_1_success"
 		"ajax:success #step_2": "step_2_success"
 		"ajax:success #step_3": "step_3_success"
 		"ajax:before #step_2": "step_2_before"
+		"ajax:before #step_3": "step_3_before"
 		"click .back_step_1": "back_step_1"
 		"click .back_step_2": "back_step_2"
 		"click .m-top": "move_top"
@@ -20,45 +23,53 @@ class window.SmartMerchant.PropertyPushView extends SmartMerchant.PushProgramVie
 	initialize: ->
 		@listenTo(@model, 'change', @render)
 		$("#side_nav li a[href='#" + @id + "']").parent().addClass('active')
-		@model.fetch
-			success: (data) =>
+		if window.target_program
+			$.get "/plan/personals/options?id=#{window.target_program.get('program_id')}",(data) =>
+				@model.set data.data
 				$("#article").html(@render().el)
+				@step_2_extra()
+				$("#push_content").trigger "keyup"
+		else
+			@model.fetch
+				success: (data) =>
+					$("#article").html(@render().el)
 		window.route.active_view = this
 	close: ->
-		@model.set step: 1
+		new_data = _.extend @model.defaults,step: 1
+		@model.clear(silent:true).set(new_data,silent: true)
+		window.target_program = null
 		super()
 	render: ->
 		template = @template(@model.toJSON())
 		@$el.html(template)
 		this
-	step_2_extra: ->
+	step_2_extra: (min = 1000,max = 1000000,step = 1000) ->
 		@setup_date_picker()
 		if $(".slider input").val() == ''
-			number_value = 1000
+			number_value = min
 		else
 			number_value = $(".slider input").val()
 			$(".slider .num").text number_value + "条"
 		$('#number-slider').slider
-			min: 1000
-			max: 1000000
-			step: 1000
+			min: min
+			max: max
+			step: step
 			value: number_value
 			range: "min"
-			slide: (event,ui) ->				
+			slide: (event,ui) ->
 				left = $(ui.handle).css 'left'
 				$(".slider .num").text ui.value + "条"
 				$(".slider input").val ui.value
 				$(".slider .num").css "left":left
-			start: (e) ->
-				$(".slider .num").show()
+			start: (e) =>
+				$(".slider .num_wrap").show()
+				@model.unset "push_number_perday",silent: true
 			stop: (e) =>
-				$(".slider .num").hide()
+				$(".slider .num_wrap").hide()
 				unless @validate_date() is false
-					@render_rule_detail()			
+					@render_rule_detail()
 			change: (e,ui) =>
-				$(".push_number .big_num").text(ui.value)
-				buy_number = ui.value - @model.get("personal")
-				$(".buy_number .big_num").text("#{buy_number}条")
+				@change_summary ui.value
 	back_step_1: ->
 		@model.set
 			step: 1
@@ -66,21 +77,31 @@ class window.SmartMerchant.PropertyPushView extends SmartMerchant.PushProgramVie
 		@model.set
 			step: 2
 		@step_2_extra()
+		@render_rule_detail()
+		$("#push_content").trigger "keyup"
 	step_2_before: (e) ->
-		vt = @validate_title(e) 
-		vd = @validate_date() 
+		vt = @validate_title(e)
+		vd = @validate_date()
 		vc = @validate_content(e)
-		vt and vc and vd
+		vm = @validate_money(e)
+		vt and vc and vd and vm
+	step_3_before: (e) ->
+		Utils.loading $(e.currentTarget)
 	step_1_success: (e,data) ->
 		data = _.extend data.data,step: 2
 		@model.set data
 		@step_2_extra()
+		Utils.loaded $(e.currentTarget)
 		this
 	step_2_success: (e,data) ->
-		data = _.extend data.data,step: 3
-		@model.set data
+		if data.status is 0
+			data = _.extend data.data,step: 3,token: window.token
+			@model.set data
+		else
+			alert data.msg
 		this
 	step_3_success: (e,data) ->
+		Utils.loaded $(e.currentTarget)
 		window.route.navigate("manage_list",true)
 		this
 	move_top: ->
@@ -108,7 +129,7 @@ class window.SmartMerchant.PropertyPushView extends SmartMerchant.PushProgramVie
 		begin_date = $.date(bdv, "yyyy-MM-dd").adjust("D", -1)
 		end_date = $.date(edv, "yyyy-MM-dd")
 		days = (end_date.date() - begin_date.date())/(3600*1000*24)
-		default_num = parseInt(number/(days*1000))
+		default_num = Number(number/(days*1000))
 		default_mod = number%(days*1000)
 
 		data = _.map [1..days],(i) =>
@@ -128,7 +149,7 @@ class window.SmartMerchant.PropertyPushView extends SmartMerchant.PushProgramVie
 			step: 1000
 	spinedit: (e) ->
 		map = _.map $(".spinEdit"), (e) ->
-			parseInt $(e).val()
+			Number $(e).val()
 		data = _.reduce map,(memo,num) ->
 			memo + num
 		if data < 1000
@@ -147,5 +168,20 @@ class window.SmartMerchant.PropertyPushView extends SmartMerchant.PushProgramVie
 		this
 	set_default: ->
 		@render_rule_detail()
-	
-	
+	change_summary: (val) ->
+		all_number = val*@per_number
+		$(".push_number .big_num").text all_number
+		buy_number = all_number - @model.get("personal")
+		buy_number = if buy_number < 0 then 0 else buy_number
+		$(".buy_number .big_num").text("#{buy_number}条")
+
+	word_tip: (e) ->
+		super(e)
+		@change_summary $('#number-slider').slider("value")
+	validate_money: (e) ->
+		$action = $(e.currentTarget).find(".action")
+		has_num = Number @model.get("personal")
+		need_num = $('#number-slider').slider("value")*@per_number - has_num
+		if need_num > 0
+			$(".err_tip",$action).text "您的个性化短信剩余#{has_num}条，还需购买#{need_num}条！"
+			false

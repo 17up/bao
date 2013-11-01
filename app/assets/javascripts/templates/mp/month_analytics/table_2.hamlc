@@ -13,20 +13,21 @@
 				成交金额占比
 			%th
 				客单价（元）
-	- for item in [0..16]
+	- for item,i in @collection
 		%tr
 			%td
-				7次			
+				- if i is 9
+					10次及以上
+				- else
+					= i + 1
+					次
 			%td
-				100
+				= item[0]
 			%td
-				22%
+				= "#{parseInt(item[2]*100)}%"
 			%td
-				150
+				= item[1]
 			%td
-				20%
+				= "#{parseInt(item[3]*100)}%"
 			%td
-				1000
-
-.text-right
-	!= @pagination_str
+				= item[4]

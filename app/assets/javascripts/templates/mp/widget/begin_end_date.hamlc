@@ -1,8 +1,15 @@
-.form-group.date.form_datetime
-	%label(for="begin_date")
-		开始日期
-	%input#begin_date.form-control{:value => @begin_date}(readonly="readonly" type="text" name="begin_date")
-.form-group.date.form_datetime
-	%label(for="end_date")
-		结束日期
-	%input#end_date.form-control{:value => @end_date}(readonly="readonly" type="text" name="end_date")
+.group-wrap.clearfix
+	.date.form_datetime.input-group
+		%label.input-group-addon(for="begin_date")
+			- if @month
+				开始月份
+			- else
+				开始日期
+		%input#begin_date.form-control{:value => @begin_date}(readonly="readonly" type="text" name="begin_date")
+	.date.form_datetime.input-group
+		%label.input-group-addon(for="end_date")
+			- if @month
+				结束月份
+			- else
+				结束日期
+		%input#end_date.form-control{:value => @end_date}(readonly="readonly" type="text" name="end_date")

@@ -1,72 +1,86 @@
 #encoding: utf-8
 
 class Mp::Member < ActiveRecord::Base
-  include AuthenticationConcern
+  include  AppHelper
+  include  AuthenticationConcern
+  include  SoftDeleted
+  include  ArConstants
+  include  ZhbCategory
+  include  PlanOps::Member
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-
-  # attr_accessible :email, :password, :password_confirmation, :remember_me, :role, :user_name, :mid, :tid,:user_name,:mobile
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable#, :validatable
   belongs_to :m_role, :class_name => "Mp::Role", :foreign_key => "role"
   has_many :member_stores
   has_many :stores, :through => :member_stores
   has_many :member_plans, :class_name => "::Mp::MemberPlan", :foreign_key => "member_id"
   has_one :member_coupon
+  has_many :name_lists, class_name: 'Mp::NameList', foreign_key: 'user_id'
+
+  validates :user_name,:password,presence: true
+  validates :user_name,length: { minimum: 3 },uniqueness: { case_sensitive: false}
+  validates :password ,length: { in: 6..20 }
 
   belongs_to :merchant
+  belongs_to :agent, foreign_key: 'merchant_id'
   belongs_to :store
 
-  def is_admin?
-    role == 3
+  attr_accessible *column_names, :login, :password
+
+  def user_label
+    upsmart? ? user_name : store.nil? ? user_name : store.store_name
   end
 
   def display_result_page?
     member_coupon && member_coupon.open?
   end
 
-  def create_plan config = {}
-    push_time = (config[:push_time].first ||'').split(',')
-    push_date = (config[:push_date].first||'').split(',')
-    push_number = (config[:push_number_perday].first||'').split(',')
+  def change_password config
+    self.update_attributes password: config[:password]
+  end
 
-    target = Nexus::Target.create sms_content: config[:push_content]
+  def plan_category config
+    current_controller_name config
+  end
 
-    plan = target.plans.create store_id: store_id, merchant_id: merchant_id, name: config[:name], status: 0, city: city,
-                               plan_type: config[:plan_type]
-    program =plan.programs.create program_name: plan.name, program_code: plan.plan_code, program_status: 0, model_type: config[:model_type],
-                                  program_type: config[:program_type], begin_at: config[:begin_date], end_at: config[:end_date]
+  def create_program plan, config
+    plan.programs.create program_name: plan.name, program_code: plan.plan_code, program_status: 0, model_type: config[:model_type],
+                         program_type: plan.plan_type, begin_at: config[:begin_date], end_at: config[:end_date], model_type: config[:model_type]||'target'
+  end
 
-    push_date.each_with_index do |date, index|
-      begin_hour, end_hour = (push_time[index]||'').split('-')
-      program.tasks.create begin_date: date, end_date: date, begin_hour: begin_hour,
-                           end_hour: end_hour, task_type: 1, task_status: 0, plan_count: push_number[index]
+  def create_name_list config={}
+    name_list = Mp::NameList.create name: config[:name], user_id: self.id, merchant_id: self.merchant_id, store_id: self.store_id
+
+    (config[:mobiles]||'').split(',').each do |mobile|
+      name_list.name_mobiles.create mobile: mobile if mobile=~ /\d{11}/
     end
-    
-    plan
+
+    name_list
   end
 
   def programs config={}
-    (
-    if merchant?
+    if upsmart?
+      Nexus::Program.list.page(config[:page]||1).per(10)
+    elsif merchant?
+      config[:category_name] = 'merchant' if config[:category_name].blank?
+      store.programs(config).page(config[:page]||1).per(10)
     else
-      store.try(:programs, config)
+      store.programs(config).page(config[:page]||1).per(10)
     end
-    )|| [] rescue []
+
+  rescue => e
+    []
   end
 
-  def agent?
-    false
+  def union_programs config={}
+    member_plans.includes(:program, program: [:plan]).page(config[:page]||1)
   end
-
-  def merchant?
-    false
-  end
-
-  def store?
-    true
-  end
-
+  
   def city_name
-    store.try(:store_city)
+    city_id = store.try(:store_city)
+    city_id =~ /^\d+$/ ? City.find(city_id).city_ch_name : city_id if city_id.present?
+
+  rescue => e
+    city_id
   end
 
   def city
@@ -82,4 +96,7 @@ class Mp::Member < ActiveRecord::Base
     super(:only => [:id, :email, :user_name, :mid, :tid, :mobile, :merchant_id, :store_id]).merge(ext)
   end
 
+  def category
+    MEMBER_CATEGORIES[category_name.to_sym]
+  end
 end

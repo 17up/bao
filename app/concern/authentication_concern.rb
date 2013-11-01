@@ -30,15 +30,32 @@ module AuthenticationConcern
            login = conditions.delete :email if login.blank?
            # conditions = nil
            u = nil
-        
+           
            if  login =~ /^\d+$/ && login.length == 11
-             u = where(conditions).where(mobile: login).first
+             u = where(conditions).where(mobile: login,enable_zhb: true).first
            elsif login =~ email_regex 
-             u = where(conditions).where(email: login).first
+             u = where(conditions).where(email: login,enable_zhb: true).first
            end
            
-           u = where(conditions).where(user_name: login).first if u.nil?
-         
+           u = where(conditions).where(user_name: login,enable_zhb: true).first if u.nil?
+           
+           # if u.present?
+           #   merchant = u.try(:merchant)
+           #   
+           #   if merchant.present?
+           #     if merchant.approved? && merchant.package_end >= Time.now
+           #       u
+           #     else
+           #       puts "*** merchant status is invalid:#{merchant.status},end in:#{merchant.package_end}"
+           #       nil
+           #     end
+           #   else
+           #     u
+           #   end
+           # else
+           #   u
+           # end
+           # u.errors.add('')
            u
          end
        end

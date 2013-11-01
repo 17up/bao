@@ -1,0 +1,31 @@
+%ul
+	%li
+		.big_num
+			= @summary[0]
+		.desc
+			成交笔数
+	%li
+		.big_num
+			= @summary[1]
+		.desc
+			成交人数
+	%li
+		.big_num
+			= @summary[2]
+		.desc
+			新客户数
+	%li
+		.big_num
+			= @summary[3]
+		.desc
+			老客户数
+	%li
+		.big_num
+			= @summary[4]
+		.desc
+			成交金额（元）
+	%li
+		.big_num
+			= @summary[5]
+		.desc
+			客单价（元）
